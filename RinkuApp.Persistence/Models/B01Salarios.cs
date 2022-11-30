@@ -31,17 +31,17 @@ namespace RinkuApp.Persistence.Models
         [Column("last_modified_on")]
         public DateTime? LastModifiedOn { get; set; }
 
-        public B01Salarios(B01Salarios src)
-        {
-            Id = src.Id;
-            IdEmpleado = src.IdEmpleado;
-            Salario = src.Salario;
-            FechaContratacion = src.FechaContratacion;
-            CreatedBy = src.CreatedBy;
-            CreatedOn = src.CreatedOn;
-            LastModifiedBy = src.LastModifiedBy;
-            LastModifiedOn = src.LastModifiedOn;
-        }
+        //public B01Salarios(B01Salarios src)
+        //{
+        //    Id = src.Id;
+        //    IdEmpleado = src.IdEmpleado;
+        //    Salario = src.Salario;
+        //    FechaContratacion = src.FechaContratacion;
+        //    CreatedBy = src.CreatedBy;
+        //    CreatedOn = src.CreatedOn;
+        //    LastModifiedBy = src.LastModifiedBy;
+        //    LastModifiedOn = src.LastModifiedOn;
+        //}
 
         public void UpdateFromJson(JsonElement jsonrecord)
         {

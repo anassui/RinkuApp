@@ -40,14 +40,14 @@ namespace RinkuApp.Persistence.Models
         public DateTime? LastModifiedOn { get; set; }
 
 
-        public BitacoraHorasLaboradas(BitacoraHorasLaboradas src)
-        {
-            Id = src.Id;
-            IdEmpleado = src.IdEmpleado;
-            Evento = src.Evento;
-            Uuid = src.Uuid;
-            Mensaje = src.Mensaje;
-        }
+        //public BitacoraHorasLaboradas(BitacoraHorasLaboradas src)
+        //{
+        //    Id = src.Id;
+        //    IdEmpleado = src.IdEmpleado;
+        //    Evento = src.Evento;
+        //    Uuid = src.Uuid;
+        //    Mensaje = src.Mensaje;
+        //}
 
 
 

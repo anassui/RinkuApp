@@ -1,11 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using RinkuApp.Persistence.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RinkuApp.Persistence.Data
 {
@@ -23,5 +18,11 @@ namespace RinkuApp.Persistence.Data
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
         }
         public DbSet<A01Empleados> A01Empleados { get; set; }
+        public DbSet<A02Roles> A02Roles { get; set; }
+        public DbSet<B01Salarios> B01Salarios { get; set; }
+        public DbSet<B02RolEmpleado> B02RolEmpleado { get; set; }
+        public DbSet<B03EntregasEmpleado> B03EntregasEmpleado { get; set; }
+        public DbSet<X01ParametrosGenerales> X01ParametrosGenerales { get; set; }
+        public DbSet<BitacoraHorasLaboradas> BitacoraHorasLaboradas { get; set; }
     }
 }

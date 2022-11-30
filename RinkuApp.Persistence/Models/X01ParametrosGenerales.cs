@@ -54,25 +54,25 @@ namespace RinkuApp.Persistence.Models
 
         [Column("last_modified_on")]
         public DateTime? LastModifiedOn { get; set; }
-        public X01ParametrosGenerales(X01ParametrosGenerales src) 
-        {
-            Id = src.Id;
-            IdParametro = src.IdParametro;
-            NombreParametro = src.NombreParametro;
-            TipoParametro = src.TipoParametro;
-            GrupoParametro = src.GrupoParametro;
-            ValorParametro = src.ValorParametro;
-            UnidadMedida = src.UnidadMedida;
-            TipoValor = src.TipoValor;
-            LimiteInferior = src.LimiteInferior;
-            LimiteSuperior = src.LimiteSuperior;
-            EsParametroInterno = src.EsParametroInterno;
-            PuedeSerVacioCero = src.PuedeSerVacioCero;
-            CreatedBy = src.CreatedBy;
-            CreatedOn = src.CreatedOn;
-            LastModifiedBy = src.LastModifiedBy;
-            LastModifiedOn = src.LastModifiedOn;
-        }
+        //public X01ParametrosGenerales(X01ParametrosGenerales src) 
+        //{
+        //    Id = src.Id;
+        //    IdParametro = src.IdParametro;
+        //    NombreParametro = src.NombreParametro;
+        //    TipoParametro = src.TipoParametro;
+        //    GrupoParametro = src.GrupoParametro;
+        //    ValorParametro = src.ValorParametro;
+        //    UnidadMedida = src.UnidadMedida;
+        //    TipoValor = src.TipoValor;
+        //    LimiteInferior = src.LimiteInferior;
+        //    LimiteSuperior = src.LimiteSuperior;
+        //    EsParametroInterno = src.EsParametroInterno;
+        //    PuedeSerVacioCero = src.PuedeSerVacioCero;
+        //    CreatedBy = src.CreatedBy;
+        //    CreatedOn = src.CreatedOn;
+        //    LastModifiedBy = src.LastModifiedBy;
+        //    LastModifiedOn = src.LastModifiedOn;
+        //}
 
         
 
