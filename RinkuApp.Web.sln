@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32901.215
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RinkuApp.Web", "RinkuApp.Web.csproj", "{69743A80-FFF0-4469-9397-A43A99AF8110}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RinkuApp.Web", "RinkuApp.Web\RinkuApp.Web.csproj", "{20235F0B-6EE7-4CA9-B13E-72DC026BC167}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RinkuApp.Persistence", "..\RinkuApp.Persistence\RinkuApp.Persistence.csproj", "{74BC28A3-5866-416F-B8DB-0CDE8D4D7C49}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RinkuApp.Persistence", "RinkuApp.Persistence\RinkuApp.Persistence.csproj", "{E8697C87-0006-4487-AC2F-5F3FB02AFD8C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RinkuApp.Service", "..\RinkuApp.Service\RinkuApp.Service.csproj", "{BA50D46F-F6E4-4763-B9FC-19C3EBBCD597}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RinkuApp.Service", "RinkuApp.Service\RinkuApp.Service.csproj", "{43FE3420-521B-4AC6-82D0-A97FC2A533DE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,18 +15,18 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{69743A80-FFF0-4469-9397-A43A99AF8110}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{69743A80-FFF0-4469-9397-A43A99AF8110}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{69743A80-FFF0-4469-9397-A43A99AF8110}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{69743A80-FFF0-4469-9397-A43A99AF8110}.Release|Any CPU.Build.0 = Release|Any CPU
-		{74BC28A3-5866-416F-B8DB-0CDE8D4D7C49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{74BC28A3-5866-416F-B8DB-0CDE8D4D7C49}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{74BC28A3-5866-416F-B8DB-0CDE8D4D7C49}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{74BC28A3-5866-416F-B8DB-0CDE8D4D7C49}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BA50D46F-F6E4-4763-B9FC-19C3EBBCD597}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BA50D46F-F6E4-4763-B9FC-19C3EBBCD597}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BA50D46F-F6E4-4763-B9FC-19C3EBBCD597}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BA50D46F-F6E4-4763-B9FC-19C3EBBCD597}.Release|Any CPU.Build.0 = Release|Any CPU
+		{20235F0B-6EE7-4CA9-B13E-72DC026BC167}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20235F0B-6EE7-4CA9-B13E-72DC026BC167}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20235F0B-6EE7-4CA9-B13E-72DC026BC167}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20235F0B-6EE7-4CA9-B13E-72DC026BC167}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E8697C87-0006-4487-AC2F-5F3FB02AFD8C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8697C87-0006-4487-AC2F-5F3FB02AFD8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8697C87-0006-4487-AC2F-5F3FB02AFD8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E8697C87-0006-4487-AC2F-5F3FB02AFD8C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43FE3420-521B-4AC6-82D0-A97FC2A533DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43FE3420-521B-4AC6-82D0-A97FC2A533DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43FE3420-521B-4AC6-82D0-A97FC2A533DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43FE3420-521B-4AC6-82D0-A97FC2A533DE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
