@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32901.215
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RinkuApp.Web", "RinkuApp.Web.csproj", "{69743A80-FFF0-4469-9397-A43A99AF8110}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RinkuApp.Persistence", "..\RinkuApp.Persistence\RinkuApp.Persistence.csproj", "{74BC28A3-5866-416F-B8DB-0CDE8D4D7C49}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RinkuApp.Service", "..\RinkuApp.Service\RinkuApp.Service.csproj", "{BA50D46F-F6E4-4763-B9FC-19C3EBBCD597}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{69743A80-FFF0-4469-9397-A43A99AF8110}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69743A80-FFF0-4469-9397-A43A99AF8110}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69743A80-FFF0-4469-9397-A43A99AF8110}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69743A80-FFF0-4469-9397-A43A99AF8110}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74BC28A3-5866-416F-B8DB-0CDE8D4D7C49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74BC28A3-5866-416F-B8DB-0CDE8D4D7C49}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74BC28A3-5866-416F-B8DB-0CDE8D4D7C49}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74BC28A3-5866-416F-B8DB-0CDE8D4D7C49}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA50D46F-F6E4-4763-B9FC-19C3EBBCD597}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA50D46F-F6E4-4763-B9FC-19C3EBBCD597}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA50D46F-F6E4-4763-B9FC-19C3EBBCD597}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA50D46F-F6E4-4763-B9FC-19C3EBBCD597}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8F8B803C-2B67-490C-9C47-5A1BBEFD1CC3}
+	EndGlobalSection
+EndGlobal
