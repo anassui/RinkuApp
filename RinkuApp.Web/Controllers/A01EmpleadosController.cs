@@ -5,13 +5,16 @@ using RinkuApp.Services.ServicesInterface;
 
 namespace RinkuApp.Web.Controllers
 {
+    [ApiController]
+    [Route("[controller]")]
     public class A01EmpleadosController : ControllerBase
     {
         private readonly IA01EmpleadosService _service;
-
-        public  A01EmpleadosController(IA01EmpleadosService service)
+        private readonly ILogger<A01EmpleadosController> _logger;
+        public  A01EmpleadosController(IA01EmpleadosService service, ILogger<A01EmpleadosController> logger)
         {
             _service = service;
+            _logger = logger;
         }
 
         [HttpGet]
