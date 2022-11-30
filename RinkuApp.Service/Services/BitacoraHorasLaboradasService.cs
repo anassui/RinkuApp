@@ -1,6 +1,7 @@
 ﻿using RinkuApp.Persistence.Models;
 using RinkuApp.Persistence.RepositoriesInterface;
-namespace RinkuApp.Persistence.Repositories
+using RinkuApp. Services.ServicesInterface;
+namespace RinkuApp.Service.Services
 {
     public class BitacoraHorasLaboradasService: IBitacoraHorasLaboradasService
     {

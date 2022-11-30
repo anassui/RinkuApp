@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RinkuApp.Persistence.RepositoriesInterface
+namespace RinkuApp. Services.ServicesInterface
 {
     public interface IB03EntregasEmpleadoService
     {

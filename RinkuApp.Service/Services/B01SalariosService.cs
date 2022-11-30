@@ -2,13 +2,14 @@
 using RinkuApp.Persistence.Data;
 using RinkuApp.Persistence.Models;
 using RinkuApp.Persistence.RepositoriesInterface;
+using RinkuApp.Services.ServicesInterface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RinkuApp.Persistence.Repositories
+namespace RinkuApp.Service.Services
 {
     public class B01SalariosService : IB01SalariosService
     {

@@ -2,8 +2,9 @@
 using RinkuApp.Persistence.Data;
 using RinkuApp.Persistence.Models;
 using RinkuApp.Persistence.RepositoriesInterface;
+using RinkuApp.Services.ServicesInterface;
 
-namespace RinkuApp.Persistence.Repositories
+namespace RinkuApp.Service.Services
 {
     public class A01EmpleadosService : IA01EmpleadosService
     {

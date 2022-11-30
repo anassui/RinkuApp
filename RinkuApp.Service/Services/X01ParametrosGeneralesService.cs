@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using RinkuApp.Persistence.Data;
 using RinkuApp.Persistence.Models;
-using RinkuApp.Persistence.RepositoriesInterface;
+using RinkuApp. Services.ServicesInterface;
 
-namespace RinkuApp.Persistence.Repositories
+namespace RinkuApp.Service.Services
 {
     public class X01ParametrosGeneralesService: IX01ParametrosGeneralesService
     {

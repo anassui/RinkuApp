@@ -1,6 +1,6 @@
 ﻿using RinkuApp.Persistence.Models;
 
-namespace RinkuApp.Persistence.RepositoriesInterface
+namespace RinkuApp.Services.ServicesInterface
 {
     public interface IA01EmpleadosService
     {
