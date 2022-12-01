@@ -5,6 +5,7 @@ namespace RinkuApp.Services.ServicesInterface
     public interface IA01EmpleadosService
     {
         Task<IEnumerable<A01Empleados>> GetEmpleados();
+        List<A01Empleados> GetEmpleadoslist();
 
         Task<A01Empleados> GetEmpleadosById(long id);
 

@@ -42,6 +42,9 @@ namespace RinkuApp.Service.Services
             return await _repository.Delete(id).ConfigureAwait(false);
         }
 
-   
+        public List<A01Empleados> GetEmpleadoslist()
+        {
+            return _repository.GetEmpleadoslist();
+        }
     }
 }

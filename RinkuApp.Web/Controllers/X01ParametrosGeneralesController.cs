@@ -7,7 +7,7 @@ namespace RinkuApp.Web.Areas.Empleados.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class X01ParametrosGeneralesController : ControllerBase
+    public class X01ParametrosGeneralesController : Controller
     {
         private readonly IX01ParametrosGeneralesService _service;
         private readonly ILogger<X01ParametrosGeneralesController> _logger;
@@ -15,6 +15,11 @@ namespace RinkuApp.Web.Areas.Empleados.Controllers
         {
             _service = service;
             _logger = logger;
+        }
+
+        public IActionResult Index()
+        {
+            return this.View();
         }
 
         [HttpGet]

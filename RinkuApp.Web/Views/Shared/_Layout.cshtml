@@ -1,67 +1,148 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="zxx" class="js">
+
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Rinku App</title>
-
-    <environment include="Development">
-        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-        <link rel="stylesheet" href="~/css/site.css" />
-
-    </environment>
-    <environment exclude="Development">
-        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
-              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
-              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
-        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
-    </environment>
+    <base href=".~/">
+    <meta charset="utf-8">
+    <meta name="author" content="Softnio">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="A powerful and conceptual apps base dashboard template that especially build for developers and programmers.">
+    <!-- Fav Icon  -->
+    <link rel="shortcut icon" href="~/images/favicon.png">
+    <!-- Page Title  -->
+    <title>Sales Dashboard | DashLite Admin Template</title>
+    <!-- StyleSheets  -->
+    <link rel="stylesheet" href="~/assets/css/dashlite.css?ver=3.0.3">
+    <link id="skin-default" rel="stylesheet" href="~/assets/css/theme.css?ver=3.0.3">
 </head>
-<body>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">Rinku App</a>
+
+<body class="nk-body bg-lighter npc-general has-sidebar ">
+    <div class="nk-app-root">
+        <!-- main  -->
+        <div class="nk-main ">
+            <!-- sidebar  -->
+            <div class="nk-sidebar nk-sidebar-fixed is-dark " data-content="sidebarMenu">
+                <div class="nk-sidebar-element nk-sidebar-head">
+                    <div class="nk-menu-trigger">
+                        <a href="#" class="nk-nav-toggle nk-quick-nav-icon d-xl-none" data-target="sidebarMenu"><em class="icon ni ni-arrow-left"></em></a>
+                        <a href="#" class="nk-nav-compact nk-quick-nav-icon d-none d-xl-inline-flex" data-target="sidebarMenu"><em class="icon ni ni-menu"></em></a>
+                    </div>
+                    <div class="nk-sidebar-brand">
+                        <a href="html/index.html" class="logo-link nk-sidebar-logo">
+                            <img class="logo-light logo-img" src="~/images/logo.png" srcset="~/images/logo2x.png 2x" alt="logo">
+                            <img class="logo-dark logo-img" src="~/images/logo-dark.png" srcset="~/images/logo-dark2x.png 2x" alt="logo-dark">
+                        </a>
+                    </div>
+                </div><!-- .nk-sidebar-element -->
+                <div class="nk-sidebar-element nk-sidebar-body">
+                    <div class="nk-sidebar-content">
+                        <div class="nk-sidebar-menu" data-simplebar>
+                            <ul class="nk-menu">
+                                <li class="nk-menu-heading">
+                                    <h6 class="overline-title text-primary-alt">Use-Case Preview</h6>
+                                </li><!-- .nk-menu-item -->
+                                <li class="nk-menu-item">
+                                    <a href="/A01Empleados" class="nk-menu-link">
+                                        <span class="nk-menu-icon"><em class="icon ni ni-user-list"></em></span>
+                                        <span class="nk-menu-text">Empleados</span><span class="nk-menu-badge">A01</span>
+                                    </a>
+                                </li><!-- .nk-menu-item -->
+                                <li class="nk-menu-item">
+                                    <a href="/A02Roles" class="nk-menu-link">
+                                        <span class="nk-menu-icon"><em class="icon ni ni-users"></em></span>
+                                        <span class="nk-menu-text">Roles</span><span class="nk-menu-badge">A02</span>
+                                    </a>
+                                </li><!-- .nk-menu-item -->
+                                <li class="nk-menu-item">
+                                    <a href="/B01Salarios" class="nk-menu-link">
+                                        <span class="nk-menu-icon"><em class="icon ni ni-coins"></em></span>
+                                        <span class="nk-menu-text">Salarios</span><span class="nk-menu-badge">B01</span>
+                                    </a>
+                                </li><!-- .nk-menu-item -->
+                                <li class="nk-menu-item">
+                                    <a href="/B02RolEmpleado" class="nk-menu-link">
+                                        <span class="nk-menu-icon"><em class="icon ni ni-users"></em></span>
+                                        <span class="nk-menu-text">Rol Empleado</span><span class="nk-menu-badge">B02</span>
+                                    </a>
+                                </li><!-- .nk-menu-item -->
+                                <li class="nk-menu-item">
+                                    <a href="/B03EntregasEmpleado" class="nk-menu-link">
+                                        <span class="nk-menu-icon"><em class="icon ni ni-tranx"></em></span>
+                                        <span class="nk-menu-text">Entregas Empleado</span><span class="nk-menu-badge">B03</span>
+                                    </a>
+                                </li><!-- .nk-menu-item -->
+                                <li class="nk-menu-item">
+                                    <a href="/BitacoraHorasLaboradas" class="nk-menu-link">
+                                        <span class="nk-menu-icon"><em class="icon ni ni-setting-alt"></em></span>
+                                        <span class="nk-menu-text">Parametros Generales</span><span class="nk-menu-badge">X01</span>
+                                    </a>
+                                </li><!-- .nk-menu-item -->
+                                <li class="nk-menu-item">
+                                    <a href="/X01ParametrosGenerales" class="nk-menu-link">
+                                        <span class="nk-menu-icon"><em class="icon ni ni-todo"></em></span>
+                                        <span class="nk-menu-text">Bitacora</span>
+                                    </a>
+                                </li><!-- .nk-menu-item -->
+                            </ul><!-- .nk-menu -->
+                        </div><!-- .nk-sidebar-menu -->
+                    </div><!-- .nk-sidebar-content -->
+                </div><!-- .nk-sidebar-element -->
             </div>
-            <div class="navbar-collapse collapse">
+            <!-- sidebar  -->
+            <!-- wrap  -->
+            <div class="nk-wrap ">
+                <!-- main header  -->
+                <div class="nk-header nk-header-fixed is-light">
+                    <div class="container-fluid">
+                        <div class="nk-header-wrap">                                                   
+                            <div class="nk-header-tools">
+                                <ul class="nk-quick-nav">
+                                    <li class="dropdown language-dropdown d-none d-sm-block me-n1">
+                                        <a href="#" class="dropdown-toggle nk-quick-nav-icon" data-bs-toggle="dropdown">
+                                          
+                                        </a>                                       
+                                    </li><!-- .dropdown -->                                    
+                                </ul><!-- .nk-quick-nav -->
+                            </div><!-- .nk-header-tools -->
+                        </div><!-- .nk-header-wrap -->
+                    </div><!-- .container-fliud -->
+                </div>
+                <!-- main header -->
+                <!-- content  -->
+                <div class="nk-content ">
+                    <div class="container-fluid">
+                        <div class="nk-content-inner">
+                            @RenderBody()
+                        </div>
+                    </div>
+                </div>
+                <!-- content  -->
+                <!-- footer  -->
+                <div class="nk-footer">
+                    <div class="container-fluid">
+                        <div class="nk-footer-wrap">
+                            <div class="nk-footer-copyright">
+                                &copy; Rinku APP 2022
+                            </div>                           
+                        </div>
+                    </div>
+                </div>
+                <!-- footer  -->
             </div>
+            <!-- wrap  -->
         </div>
-    </nav>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; 2022 - RinkuApp</p>
-        </footer>
+        <!-- main  -->
     </div>
+    <!-- app-root  -->
+    <!-- JavaScript -->
+    <script src="~/assets/js/bundle.js?ver=3.0.3"></script>
+    <script src="~/assets/js/scripts.js?ver=3.0.3"></script>
+    <script src="~/assets/js/charts/gd-default.js?ver=3.0.3"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
 
-    <environment include="Development">
-        <script src="~/lib/jquery/dist/jquery.js"></script>
-        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
-        <script src="~/js/site.js" asp-append-version="true"></script>
-    </environment>
-    <environment exclude="Development">
-        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
-                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
-                asp-fallback-test="window.jQuery"
-                crossorigin="anonymous"
-                integrity="sha384-K+ctZQ+LL8q6tP7I94W+qzQsfRV2a+AfHIi9k8z8l9ggpc8X+Ytst4yBo/hH+8Fk">
-        </script>
-        <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/bootstrap.min.js"
-                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
-                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
-                crossorigin="anonymous"
-                integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
-        </script>
-        <script src="~/js/site.min.js" asp-append-version="true"></script>
-    </environment>
-
-    @RenderSection("Scripts", required: false)
+    @await RenderSectionAsync("Scripts", required: false)  
 </body>
+
 </html>

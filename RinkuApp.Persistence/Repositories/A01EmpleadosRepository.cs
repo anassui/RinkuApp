@@ -64,16 +64,14 @@ namespace RinkuApp.Persistence.Repositories
             return A01Empleados;
         }
 
-   
-
-        
-
         private bool A01EmpleadosExists(long id)
         {
             return _context.A01Empleados.Any(obj => obj.Id == id);
         }
 
-
-
+        public List<A01Empleados> GetEmpleadoslist()
+        {
+            return _context.A01Empleados.ToList();
+        }
     }
 }

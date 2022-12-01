@@ -18,6 +18,8 @@ namespace RinkuApp.Web.Areas.Empleados.Controllers
         }
         public IActionResult Index()
         {
+            var Empleados = _service.GetEmpleadoslist();
+            this.ViewBag.Empleados = Empleados;
             return this.View();
         }
 
