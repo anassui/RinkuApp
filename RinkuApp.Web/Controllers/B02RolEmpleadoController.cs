@@ -20,7 +20,7 @@ namespace RinkuApp.Web.Areas.Empleados.Controllers
         public IActionResult Index()
         {
             var RolEmpleado = _service.GetRolesXEmpleadolist();
-            this.ViewBag.Roles = RolEmpleado;
+            this.ViewBag.RolEmpleado = RolEmpleado;
             return this.View();
         }
 

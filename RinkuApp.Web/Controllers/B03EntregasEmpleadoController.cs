@@ -20,7 +20,7 @@ namespace RinkuApp.Web.Areas.Empleados.Controllers
         public IActionResult Index()
         {
             var entregasEmpleados = _service.GetEntregasXEmpleadolist();
-            this.ViewBag.Roles = entregasEmpleados;
+            this.ViewBag.entregasEmpleados = entregasEmpleados;
             return this.View();
         }
 

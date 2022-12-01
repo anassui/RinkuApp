@@ -20,7 +20,7 @@ namespace RinkuApp.Web.Areas.Empleados.Controllers
         public IActionResult Index()
         {
             var x01ParametrosGenerales = _service.GetX01ParametrosGeneraleslist();
-            this.ViewBag.Roles = x01ParametrosGenerales;
+            this.ViewBag.x01ParametrosGenerales = x01ParametrosGenerales;
             return this.View();
         }
 

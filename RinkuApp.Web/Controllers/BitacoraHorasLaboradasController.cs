@@ -20,7 +20,7 @@ namespace RinkuApp.Web.Areas.Empleados.Controllers
         public IActionResult Index()
         {
             var bitacoraHorasLaboradas = _service.GetBitacoraHorasLaboradaslist();
-            this.ViewBag.Roles = bitacoraHorasLaboradas;
+            this.ViewBag.bitacoraHorasLaboradas = bitacoraHorasLaboradas;
             return this.View();
         }
 
