@@ -32,6 +32,13 @@ namespace RinkuApp.Web.Areas.Empleados.Controllers
             return await _service.GetX01ParametrosGenerales().ConfigureAwait(false);
         }
 
+
+        [Route("Formulario")]
+        public IActionResult Formulario()
+        {
+            return this.View();
+        }
+
         [HttpGet("{id}")]
         public async Task<X01ParametrosGenerales> GetById(long id)
         {

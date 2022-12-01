@@ -24,6 +24,12 @@ namespace RinkuApp.Web.Areas.Empleados.Controllers
             return this.View();
         }
 
+        [Route("Formulario")]
+        public IActionResult Formulario()
+        {
+            return this.View();
+        }
+
         [HttpGet]
         [Route("get-all")]
         public async Task<IEnumerable<BitacoraHorasLaboradas>> GetAll()
