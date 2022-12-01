@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using RinkuApp.Persistence.Models;
 using RinkuApp.Services.ServicesInterface;
 
-namespace RinkuApp.Web.Controllers
+namespace RinkuApp.Web.Areas.Empleados.Controllers
 {
     [ApiController]
     [Route("[controller]")]

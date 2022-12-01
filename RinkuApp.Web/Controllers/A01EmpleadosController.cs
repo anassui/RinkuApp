@@ -3,18 +3,22 @@ using Microsoft.AspNetCore.Mvc;
 using RinkuApp.Persistence.Models;
 using RinkuApp.Services.ServicesInterface;
 
-namespace RinkuApp.Web.Controllers
+namespace RinkuApp.Web.Areas.Empleados.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class A01EmpleadosController : ControllerBase
+    public class A01EmpleadosController : Controller
     {
         private readonly IA01EmpleadosService _service;
         private readonly ILogger<A01EmpleadosController> _logger;
-        public  A01EmpleadosController(IA01EmpleadosService service, ILogger<A01EmpleadosController> logger)
+        public A01EmpleadosController(IA01EmpleadosService service, ILogger<A01EmpleadosController> logger)
         {
             _service = service;
             _logger = logger;
+        }
+        public IActionResult Index()
+        {
+            return this.View();
         }
 
         [HttpGet]
@@ -73,6 +77,6 @@ namespace RinkuApp.Web.Controllers
             }
         }
 
-   
+
     }
 }
