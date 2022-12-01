@@ -9,7 +9,7 @@ using RinkuApp.Persistence.Models;
 using RinkuApp.Persistence.RepositoriesInterface;
 namespace RinkuApp.Persistence.Repositories
 {
-    public class B03EntregasEmpleadoRepository: IB03EntregasEmpleadoRepository
+    public class B03EntregasEmpleadoRepository : IB03EntregasEmpleadoRepository
     {
         private readonly AppDbContext _context;
 
@@ -80,6 +80,11 @@ namespace RinkuApp.Persistence.Repositories
         public Task<IEnumerable<B03EntregasEmpleado>> GetEntregasEmpleado()
         {
             throw new NotImplementedException();
+        }
+
+        public List<B03EntregasEmpleado> GetEntregasXEmpleadolist()
+        {
+            return _context.B03EntregasEmpleado.ToList();
         }
     }
 }

@@ -38,7 +38,10 @@ namespace RinkuApp.Service.Services
         {
             return await _repository.Delete(id).ConfigureAwait(false);
         }
+        public List<BitacoraHorasLaboradas> GetBitacoraHorasLaboradaslist()
+        {
+            return _repository.GetBitacoraHorasLaboradaslist();
+        }
 
-      
     }
 }

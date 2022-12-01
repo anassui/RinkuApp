@@ -10,7 +10,7 @@ namespace RinkuApp. Services.ServicesInterface
    public interface IBitacoraHorasLaboradasService
     {
         Task<IEnumerable<BitacoraHorasLaboradas>> GetBitacoraHorasLaboradas();
-
+        List<BitacoraHorasLaboradas> GetBitacoraHorasLaboradaslist();
         Task<BitacoraHorasLaboradas> GetBitacoraHorasLaboradasById(long id);
 
         Task Update(BitacoraHorasLaboradas BitacoraHorasLaboradas);

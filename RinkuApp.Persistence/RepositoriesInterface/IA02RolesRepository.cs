@@ -10,6 +10,7 @@ namespace RinkuApp.Persistence.RepositoriesInterface
     public interface IA02RolesRepository
     {
         Task<IEnumerable<A02Roles>> GetRoles();
+        List<A02Roles> GetRoleslist();
 
         Task<A02Roles> GetRolesById(long id);
 

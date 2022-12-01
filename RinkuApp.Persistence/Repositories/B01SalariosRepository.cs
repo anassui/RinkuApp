@@ -78,7 +78,9 @@ namespace RinkuApp.Persistence.Repositories
             return _context. B01Salarios.Any(obj => obj.Id == id);
         }
 
-
-
+        public List<B01Salarios> GetSalarioslist()
+        {
+            return _context.B01Salarios.ToList();
+        }
     }
 }

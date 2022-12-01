@@ -11,6 +11,7 @@ namespace RinkuApp.Persistence.RepositoriesInterface
     {
         Task<IEnumerable<B02RolEmpleado>> GetEmpleadoRol();
 
+        List<B02RolEmpleado> GetRolesXEmpleadolist();
         Task<B02RolEmpleado> GetRolEmpleadoById(long id);
 
         Task Update(B02RolEmpleado B02RolEmpleado);

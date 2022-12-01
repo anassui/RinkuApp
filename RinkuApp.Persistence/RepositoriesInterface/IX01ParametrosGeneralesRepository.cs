@@ -10,7 +10,7 @@ namespace RinkuApp.Persistence.RepositoriesInterface
    public interface IX01ParametrosGeneralesRepository
     {
         Task<IEnumerable<X01ParametrosGenerales>> GetX01ParametrosGenerales();
-
+        List<X01ParametrosGenerales> GetX01ParametrosGeneraleslist();
         Task<X01ParametrosGenerales> GetX01ParametrosGeneralesById(long id);
 
         Task Update(X01ParametrosGenerales X01ParametrosGenerales);

@@ -11,7 +11,7 @@ namespace RinkuApp. Services.ServicesInterface
     {
 
         Task<IEnumerable<B03EntregasEmpleado>> GetEntregasEmpleado();
-
+        List<B03EntregasEmpleado> GetEntregasXEmpleadolist();
         Task<B03EntregasEmpleado> GetEntregasEmpleadoById(long id);
 
         Task Update(B03EntregasEmpleado B03EntregasEmpleado);

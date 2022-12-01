@@ -19,6 +19,8 @@ namespace RinkuApp.Web.Areas.Empleados.Controllers
 
         public IActionResult Index()
         {
+            var salarios = _service.GetSalarioslist();
+            this.ViewBag.Roles = salarios;
             return this.View();
         }
 

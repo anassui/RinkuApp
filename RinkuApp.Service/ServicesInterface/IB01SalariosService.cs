@@ -10,7 +10,7 @@ namespace RinkuApp. Services.ServicesInterface
     public interface IB01SalariosService
     {
         Task<IEnumerable<B01Salarios>> GetSalarios();
-
+        List<B01Salarios> GetSalarioslist();
         Task<B01Salarios> GetSalariosById(long id);
 
         Task Update(B01Salarios B01Salarios);

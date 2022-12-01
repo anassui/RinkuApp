@@ -19,6 +19,8 @@ namespace RinkuApp.Web.Areas.Empleados.Controllers
 
         public IActionResult Index()
         {
+            var x01ParametrosGenerales = _service.GetX01ParametrosGeneraleslist();
+            this.ViewBag.Roles = x01ParametrosGenerales;
             return this.View();
         }
 
@@ -26,6 +28,7 @@ namespace RinkuApp.Web.Areas.Empleados.Controllers
         [Route("get-all")]
         public async Task<IEnumerable<X01ParametrosGenerales>> GetAll()
         {
+        
             return await _service.GetX01ParametrosGenerales().ConfigureAwait(false);
         }
 

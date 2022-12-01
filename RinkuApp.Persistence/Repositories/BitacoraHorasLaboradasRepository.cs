@@ -2,6 +2,7 @@
 using RinkuApp.Persistence.Data;
 using RinkuApp.Persistence.Models;
 using RinkuApp.Persistence.RepositoriesInterface;
+
 namespace RinkuApp.Persistence.Repositories
 {
     public class BitacoraHorasLaboradasRepository: IBitacoraHorasLaboradasRepository
@@ -69,6 +70,9 @@ namespace RinkuApp.Persistence.Repositories
             return _context.BitacoraHorasLaboradas.Any(obj => obj.Id == id);
         }
 
-
+        public List<BitacoraHorasLaboradas> GetBitacoraHorasLaboradaslist()
+        {
+            return _context.BitacoraHorasLaboradas.ToList();
+        }
     }
 }

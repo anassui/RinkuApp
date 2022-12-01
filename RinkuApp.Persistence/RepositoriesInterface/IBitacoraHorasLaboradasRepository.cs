@@ -10,7 +10,7 @@ namespace RinkuApp.Persistence.RepositoriesInterface
    public interface IBitacoraHorasLaboradasRepository
     {
         Task<IEnumerable<BitacoraHorasLaboradas>> GetBitacoraHorasLaboradas();
-
+        List<BitacoraHorasLaboradas> GetBitacoraHorasLaboradaslist();
         Task<BitacoraHorasLaboradas> GetBitacoraHorasLaboradasById(long id);
 
         Task Update(BitacoraHorasLaboradas BitacoraHorasLaboradas);

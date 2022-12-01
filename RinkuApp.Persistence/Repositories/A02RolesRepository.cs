@@ -75,6 +75,9 @@ namespace RinkuApp.Persistence.Repositories
             return _context.A02Roles.Any(obj => obj.Id == id);
         }
 
-  
+        public List<A02Roles> GetRoleslist()
+        {
+            return _context.A02Roles.ToList();
+        }
     }
 }

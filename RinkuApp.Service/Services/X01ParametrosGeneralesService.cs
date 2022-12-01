@@ -74,5 +74,9 @@ namespace RinkuApp.Service.Services
             return _context.X01ParametrosGenerales.Any(obj => obj.Id == id);
         }
 
+        public List<X01ParametrosGenerales> GetX01ParametrosGeneraleslist()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
