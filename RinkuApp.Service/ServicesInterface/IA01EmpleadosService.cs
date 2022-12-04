@@ -1,13 +1,14 @@
-﻿using RinkuApp.Persistence.Models;
+﻿using RinkuApp.Persistence.DTOs;
+using RinkuApp.Persistence.Models;
 
 namespace RinkuApp.Services.ServicesInterface
 {
     public interface IA01EmpleadosService
     {
         Task<IEnumerable<A01Empleados>> GetEmpleados();
+        Task<A01Empleados> GeEmpleadosById(long id);
         List<A01Empleados> GetEmpleadoslist();
-
-        Task<A01Empleados> GetEmpleadosById(long id);
+        public List<ReporteNomina> GetReporteNomina(string IdEmpleado);
 
         Task Update(A01Empleados A01Empleados);
 

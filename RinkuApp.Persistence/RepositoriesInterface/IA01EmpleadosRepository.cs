@@ -1,4 +1,5 @@
-﻿using RinkuApp.Persistence.Models;
+﻿using RinkuApp.Persistence.DTOs;
+using RinkuApp.Persistence.Models;
 
 namespace RinkuApp.Persistence.RepositoriesInterface
 {
@@ -6,9 +7,8 @@ namespace RinkuApp.Persistence.RepositoriesInterface
     {
         Task<IEnumerable<A01Empleados>> GetEmpleados();
         List<A01Empleados> GetEmpleadoslist();
-
-        Task<A01Empleados> GetEmpleadosById(long id);
-
+        Task<A01Empleados> GeEmpleadosById(long id);
+        public List<ReporteNomina> GetReporteNomina(string IdEmpleado);
         Task Update(A01Empleados A01Empleados);
 
         Task Create(A01Empleados A01Empleados);

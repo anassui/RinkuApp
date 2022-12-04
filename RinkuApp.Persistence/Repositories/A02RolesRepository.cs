@@ -26,7 +26,7 @@ namespace RinkuApp.Persistence.Repositories
 
         public async Task<A02Roles> GetRolesById(long id)
         {
-            return await _context.A02Roles.FindAsync(id);
+            return await _context.A02Roles.FindAsync(id) ?? throw new ArgumentNullException("No se encontro información del Rol."); ;
         }
 
         public async Task Update(A02Roles A02Roles)

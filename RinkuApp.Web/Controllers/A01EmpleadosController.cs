@@ -23,9 +23,16 @@ namespace RinkuApp.Web.Areas.Empleados.Controllers
             return this.View();
         }
 
-        [Route("Formulario")]
-        public IActionResult Formulario()
+        [Route("Formulario/{id}")]
+        public async Task<IActionResult> Formulario(long id)
         {
+            this.ViewBag.Details = null;
+
+            if (id != 0)
+            {
+                this.ViewBag.Details = await _service.GeEmpleadosById(id).ConfigureAwait(false);
+            }
+           
             return this.View();
         }
 
@@ -39,15 +46,17 @@ namespace RinkuApp.Web.Areas.Empleados.Controllers
         [HttpGet("{id}")]
         public async Task<A01Empleados> GetById(long id)
         {
-            return await _service.GetEmpleadosById(id).ConfigureAwait(false);
+            return await _service.GeEmpleadosById(id).ConfigureAwait(false);
         }
 
         // POST: A01EmpleadossController/Create
         [HttpPost]
+        [Route("Create")]
         public async Task Create(A01Empleados A01Empleados)
         {
             try
             {
+                A01Empleados.IdEmpleado = Guid.NewGuid().ToString();
                 await _service.Create(A01Empleados).ConfigureAwait(false);
             }
             catch
@@ -56,9 +65,8 @@ namespace RinkuApp.Web.Areas.Empleados.Controllers
             }
         }
 
-        // POST: A01EmpleadossController/Create
         [HttpPut]
-        [Route("update")]
+        [Route("Update")]
         public async Task Update(A01Empleados A01Empleados)
         {
             try
@@ -72,7 +80,7 @@ namespace RinkuApp.Web.Areas.Empleados.Controllers
         }
 
         [HttpDelete]
-        [Route("delete")]
+        [Route("delete/{id}")]
         public async Task Delete(long id)
         {
             try

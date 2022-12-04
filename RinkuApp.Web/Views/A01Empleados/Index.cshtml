@@ -21,7 +21,7 @@
                                     <a href="#" class="dropdown-toggle btn btn-icon btn-primary" data-bs-toggle="dropdown"><em class="icon ni ni-plus"></em></a>
                                     <div class="dropdown-menu dropdown-menu-end">
                                         <ul class="link-list-opt no-bdr">
-                                            <li><a href="/A01Empleados/Formulario"><span>Agregar Empleado</span></a></li>
+                                            <li><a href="/A01Empleados/Formulario/0"><span>Agregar Empleado</span></a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -43,15 +43,16 @@
                         </div><!-- .card-title-group -->
                     </div><!-- .card-inner -->
                     <div class="card-inner p-0">
-                        <div class="nk-tb-list nk-tb-ulist is-compact">
+                        <div class="nk-tb-list nk-tb-ulist">
                             <div class="nk-tb-item nk-tb-head">
                                 <div class="nk-tb-col"><span class="sub-text">ID Empleado</span></div>
-                                <div class="nk-tb-col tb-col-md"><span class="sub-text">Nombre</span></div>
-                                <div class="nk-tb-col tb-col-md"><span class="sub-text">Apellido</span></div>
-                                <div class="nk-tb-col tb-col-sm"><span class="sub-text">Edad</span></div>
-                                <div class="nk-tb-col tb-col-md"><span class="sub-text">Teléfono</span></div>
-                                <div class="nk-tb-col tb-col-xxl"><span class="sub-text">Email</span></div>
+                                <div class="nk-tb-col"><span class="sub-text">Nombre</span></div>
+                                <div class="nk-tb-col"><span class="sub-text">Apellido</span></div>
+                                <div class="nk-tb-col"><span class="sub-text">Edad</span></div>
+                                <div class="nk-tb-col"><span class="sub-text">Teléfono</span></div>
+                                <div class="nk-tb-col"><span class="sub-text">Email</span></div>
                                 <div class="nk-tb-col"><span class="sub-text">Estatus</span></div>
+                                <div class="nk-tb-col"><span class="sub-text">Creado</span></div>
                                 <div class="nk-tb-col nk-tb-col-tools text-end">
                                     <div class="dropdown">
                                         <a href="#" class="btn btn-xs btn-outline-light btn-icon dropdown-toggle" data-bs-toggle="dropdown" data-offset="0,5"><em class="icon ni ni-plus"></em></a>
@@ -68,75 +69,55 @@
                                     </div>
                                 </div>
                             </div><!-- .nk-tb-item -->
-                            <div class="nk-tb-item">
-                                @foreach (var item in this.ViewBag.Empleados)
-                                {
+                            @foreach (var item in this.ViewBag.Empleados)
+                            {
+                                <div class="nk-tb-item">
+                                    <div class="nk-tb-col text-center">
+                                        <span class="tb-lead text-small">@item.Id</span>
+                                    </div>
                                     <div class="nk-tb-col">
-                                        <div class="user-card">
-                                            <div class="user-avatar xs bg-primary">
-                                                <span>#</span>
-                                            </div>
-                                            <div class="user-name">
-                                                <span class="tb-lead">@item.IdEmpleado</span>
-                                            </div>
-                                        </div>
+                                        <span class="text-small">@item.Nombre?.ToUpper()</span>
                                     </div>
-                                    <div class="nk-tb-col tb-col-md">
-                                        <span>@item.Nombre</span>
+                                    <div class="nk-tb-col">
+                                        <span class="text-small">@item.Apellidos?.ToUpper()</span>
                                     </div>
-                                    <div class="nk-tb-col tb-col-sm">
-                                        <span>@item.Apellidos</span>
+                                    <div class="nk-tb-col">
+                                        <span class="text-small">@item.Edad</span>
                                     </div>
-                                    <div class="nk-tb-col tb-col-md">
-                                        <span>@item.Edad</span>
+                                    <div class="nk-tb-col">
+                                        <span class="text-small">@item.Telefono</span>
                                     </div>
-                                    <div class="nk-tb-col tb-col-xxl">
-                                        <span>@item.Telefono</span>
-                                    </div>
-                                    <div class="nk-tb-col tb-col-lg">
+                                    <div class="nk-tb-col">
                                         <ul class="list-status">
-                                            <li><em class="icon text-success ni ni-check-circle"></em> <span>Email</span></li>
+                                            <li><span class="text-small">@item.Email</span></li>
                                         </ul>
                                     </div>
-                                    <div class="nk-tb-col tb-col-xxl">
-                                        <span>10 Feb 2020</span>
+                                    <div class="nk-tb-col">
+                                        <span class="tb-status text-success">@(item.Estatus == 1 ? "Activo" : "Inactivo")</span>
                                     </div>
                                     <div class="nk-tb-col">
-                                        <span class="tb-status text-success">Active</span>
+                                        <span class="text-small">10 Feb 2020</span>
                                     </div>
                                     <div class="nk-tb-col nk-tb-col-tools">
                                         <ul class="nk-tb-actions gx-2">
-                                            <li class="nk-tb-action-hidden">
-                                                <a href="#" class="btn btn-sm btn-icon btn-trigger" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Wallet">
-                                                    <em class="icon ni ni-wallet-fill"></em>
-                                                </a>
-                                            </li>
-                                            <li class="nk-tb-action-hidden">
-                                                <a href="#" class="btn btn-sm btn-icon btn-trigger" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Send Email">
-                                                    <em class="icon ni ni-mail-fill"></em>
-                                                </a>
-                                            </li>
-                                            <li class="nk-tb-action-hidden">
-                                                <a href="#" class="btn btn-sm btn-icon btn-trigger" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Suspend">
-                                                    <em class="icon ni ni-user-cross-fill"></em>
-                                                </a>
-                                            </li>
                                             <li>
                                                 <div class="drodown">
                                                     <a href="#" class="btn btn-sm btn-icon btn-trigger dropdown-toggle" data-bs-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
                                                     <div class="dropdown-menu dropdown-menu-end">
                                                         <ul class="link-list-opt no-bdr">
-                                                            <li><a href="#"><em class="icon ni ni-na"></em><span>Suspender Empleado</span></a></li>
+                                                            <li><a href="/ReporteNomina/@item.IdEmpleado"><em class="icon ni ni-file-text"></em><span>Reporte</span></a></li>
+                                                            <li><a href="/A01Empleados/Formulario/@item.Id"><em class="icon ni ni-edit"></em><span>Editar</span></a></li>
+                                                            <li><a href="javascript:Delete(@item.Id)"><em class="icon ni ni-trash-alt"></em><span>Eliminar</span></a></li>
                                                         </ul>
                                                     </div>
                                                 </div>
                                             </li>
                                         </ul>
                                     </div>
-                                }
+                                </div>
 
-
-                            </div><!-- .nk-tb-item -->
+                                <!-- .nk-tb-item -->
+                            }
                         </div><!-- .nk-tb-list -->
                     </div><!-- .card-inner -->
                 </div><!-- .card-inner-group -->
@@ -144,3 +125,35 @@
         </div><!-- .nk-block -->
     </div>
 </div>
+@section scripts  {
+
+    <script>
+        function Delete(id) {
+            fetch(`/A01Empleados/delete/${id}`,
+                { method: 'DELETE' })
+                .then(function (response) {
+                    if (response.ok) {
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: 'Eliminado correctamente',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                        setTimeout(function () {
+                            window.location.href = '/A01Empleados';
+                        }, 1000);
+                        return response.json();
+                    }
+                    return Promise.reject(response);
+                }).then(data => {
+                    console.log('Success:', id);
+                }).catch(function (error) {
+                    console.log('BLAH BLAH BLAH', error);
+                });
+        }
+    </script>
+
+
+
+}

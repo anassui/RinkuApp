@@ -13,7 +13,6 @@ namespace RinkuApp.Persistence.Models
         [Column("IdEmpleado"), Required, Display(Name = "IdEmpleado"), StringLength(50)]
         public string? IdEmpleado { get; set; }
 
-
         [Column("Nombre"), Required, Display(Name = "Nombre"), StringLength(100)]
         public string? Nombre { get; set; }
 
@@ -47,6 +46,26 @@ namespace RinkuApp.Persistence.Models
 
         [Column("last_modified_on")]
         public DateTime? LastModifiedOn { get; set; }
+        public A01Empleados() 
+        { 
+        }
+        public A01Empleados(long id, string? idEmpleado, string? nombre, string? apellidos, string? edad, string? sexo, string? email, string? telefono, string? direccion, int estatus, string? createdBy, DateTime createdOn, string? lastModifiedBy, DateTime? lastModifiedOn)
+        {
+            Id = id;
+            IdEmpleado = idEmpleado;
+            Nombre = nombre;
+            Apellidos = apellidos;
+            Edad = edad;
+            Sexo = sexo;
+            Email = email;
+            Telefono = telefono;
+            Direccion = direccion;
+            Estatus = estatus;
+            CreatedBy = createdBy;
+            CreatedOn = createdOn;
+            LastModifiedBy = lastModifiedBy;
+            LastModifiedOn = lastModifiedOn;
+        }
 
         //public A01Empleados(A01Empleados src)
         //{

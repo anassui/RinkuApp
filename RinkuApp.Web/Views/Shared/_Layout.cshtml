@@ -13,7 +13,10 @@
     <title>Sales Dashboard | DashLite Admin Template</title>
     <!-- StyleSheets  -->
     <link rel="stylesheet" href="~/assets/css/dashlite.css?ver=3.0.3">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
     <link id="skin-default" rel="stylesheet" href="~/assets/css/theme.css?ver=3.0.3">
+    <link href="~/assets/vendor/libs/sweetalert2/sweetalert2.css" rel="stylesheet" />
+    <link href="~/assets/vendor/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" />
 </head>
 
 <body class="nk-body bg-lighter npc-general has-sidebar ">
@@ -78,10 +81,10 @@
                                     </a>
                                 </li><!-- .nk-menu-item -->
                                 @*<li class="nk-menu-item">
-                                    <a href="/X01ParametrosGenerales" class="nk-menu-link">
-                                        <span class="nk-menu-icon"><em class="icon ni ni-todo"></em></span>
-                                        <span class="nk-menu-text">Bitacora</span>
-                                    </a>
+                                <a href="/X01ParametrosGenerales" class="nk-menu-link">
+                                <span class="nk-menu-icon"><em class="icon ni ni-todo"></em></span>
+                                <span class="nk-menu-text">Bitacora</span>
+                                </a>
                                 </li><!-- .nk-menu-item -->*@
                             </ul><!-- .nk-menu -->
                         </div><!-- .nk-sidebar-menu -->
@@ -94,14 +97,14 @@
                 <!-- main header  -->
                 <div class="nk-header nk-header-fixed is-light">
                     <div class="container-fluid">
-                        <div class="nk-header-wrap">                                                   
+                        <div class="nk-header-wrap">
                             <div class="nk-header-tools">
                                 <ul class="nk-quick-nav">
                                     <li class="dropdown language-dropdown d-none d-sm-block me-n1">
                                         <a href="#" class="dropdown-toggle nk-quick-nav-icon" data-bs-toggle="dropdown">
-                                          
-                                        </a>                                       
-                                    </li><!-- .dropdown -->                                    
+
+                                        </a>
+                                    </li><!-- .dropdown -->
                                 </ul><!-- .nk-quick-nav -->
                             </div><!-- .nk-header-tools -->
                         </div><!-- .nk-header-wrap -->
@@ -123,7 +126,7 @@
                         <div class="nk-footer-wrap">
                             <div class="nk-footer-copyright">
                                 &copy; Rinku APP 2022
-                            </div>                           
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -141,8 +144,18 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-
-    @await RenderSectionAsync("Scripts", required: false)  
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation/dist/additional-methods.min.js"></script>ipt>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+    <script src="~/assets/vendor/libs/sweetalert2/sweetalert2.all.js"></script>
+    <script src="~/assets/vendor/libs/sweetalert2/sweetalert2.all.min.js"></script>
+    <script src="~/assets/vendor/libs/sweetalert2/sweetalert2.js"></script>
+    <script src="~/assets/vendor/libs/sweetalert2/sweetalert2.min.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
 </body>
 
 </html>

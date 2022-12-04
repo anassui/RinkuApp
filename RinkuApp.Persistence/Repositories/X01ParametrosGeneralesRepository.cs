@@ -26,7 +26,7 @@ namespace RinkuApp.Persistence.Repositories
 
         public async Task<X01ParametrosGenerales> GetX01ParametrosGeneralesById(long id)
         {
-            return await _context.X01ParametrosGenerales.FindAsync(id);
+            return await _context.X01ParametrosGenerales.FindAsync(id) ?? throw new ArgumentNullException("No se encontro información del parametro."); ;
         }
 
         public async Task Update(X01ParametrosGenerales X01ParametrosGenerales)

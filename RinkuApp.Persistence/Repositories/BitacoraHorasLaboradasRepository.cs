@@ -21,7 +21,7 @@ namespace RinkuApp.Persistence.Repositories
 
         public async Task<BitacoraHorasLaboradas> GetBitacoraHorasLaboradasById(long id)
         {
-            return await _context.BitacoraHorasLaboradas.FindAsync(id);
+            return await _context.BitacoraHorasLaboradas.FindAsync(id) ?? throw new ArgumentNullException("No se encontro información de bitacora."); ;
         }
 
         public async Task Update(BitacoraHorasLaboradas BitacoraHorasLaboradas)

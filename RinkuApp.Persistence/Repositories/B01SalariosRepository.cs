@@ -26,7 +26,7 @@ namespace RinkuApp.Persistence.Repositories
 
         public async Task< B01Salarios> GetSalariosById(long id)
         {
-            return await _context. B01Salarios.FindAsync(id);
+            return await _context. B01Salarios.FindAsync(id) ?? throw new ArgumentNullException("No se encontro información del Salario."); ;
         }
 
         public async Task Update( B01Salarios  B01Salarios)

@@ -25,7 +25,7 @@ namespace RinkuApp.Persistence.Repositories
 
         public async Task<B03EntregasEmpleado> GetEntregasEmpleadoById(long id)
         {
-            return await _context.B03EntregasEmpleado.FindAsync(id);
+            return await _context.B03EntregasEmpleado.FindAsync(id) ?? throw new ArgumentNullException("No se encontro información de entregas."); ;
         }
 
         public async Task Update(B03EntregasEmpleado B03EntregasEmpleado)
