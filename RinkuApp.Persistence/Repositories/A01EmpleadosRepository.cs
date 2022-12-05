@@ -1,9 +1,15 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
 using RinkuApp.Persistence.Data;
 using RinkuApp.Persistence.DTOs;
 using RinkuApp.Persistence.Models;
 using RinkuApp.Persistence.RepositoriesInterface;
+using System.Data.Common;
+using System.Data;
+using System.Diagnostics;
+using System.Dynamic;
 using System.Net.NetworkInformation;
+using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace RinkuApp.Persistence.Repositories
 {
@@ -95,25 +101,64 @@ namespace RinkuApp.Persistence.Repositories
 
         public List<ReporteNomina> GetReporteNomina(string IdEmpleado)
         {
-            IQueryable<ReporteNomina> entryPoint = (from src in _context.A01Empleados
-                                                    join B02 in _context.B02RolEmpleado on new { Empleado = src.IdEmpleado } equals new { Empleado = B02.IdEmpleado } into joinRolEmpleado
-                                                        from joinB02 in joinRolEmpleado.DefaultIfEmpty()
-                                                        join Salario in _context.B01Salarios on new { Empleado = src.IdEmpleado } equals new { Empleado = Salario.IdEmpleado } into joinSalario
-                                                        from joinB01 in joinSalario.DefaultIfEmpty()
-                                                    join Entregas in _context.B03EntregasEmpleado on new { Empleado = src.IdEmpleado } equals new { Empleado = Entregas.IdEmpleado } into joinEntregas
-                                                    from joinB03 in joinEntregas.DefaultIfEmpty()
-                                                    select new ReporteNomina
-                                                        {
-                                                            Id = src.Id,
-                                                            IdEmpleado = src.IdEmpleado,
-                                                            IdRol = joinB02.IdRol,
-                                                            Salario = joinB01.Salario,
-                                                            CantidadEntregas = joinB03.CantidadEntregas,
-                                                            TotalHorasLaboradas = 40,
-                                                            ISR = 9,
 
-                                                    });
-            return entryPoint.Where(e=>e.IdEmpleado == IdEmpleado).ToList();
+            List<ReporteNomina> Result = new List<ReporteNomina>();
+            SqlParameter[] parameters =
+            {
+
+                new SqlParameter
+                {
+                    ParameterName = "IdEmpleado",
+                    Value = IdEmpleado,
+                    SqlDbType = SqlDbType.VarChar,
+                    Size = 50
+                }
+            };
+            try
+            {
+                using var command = _context.Database.GetDbConnection().CreateCommand();
+                command.CommandText = "SP_Reporte_Nomina @IdEmpleado";
+                command.Parameters.AddRange(parameters);
+                command.CommandTimeout = 18000;
+                _context.Database.OpenConnection();
+                DbDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    ReporteNomina reporte = new ReporteNomina();
+                    reporte.IdEmpleado = reader["IdEmpleado"].ToString();
+                    reporte.Nombre = reader["Nombre"].ToString();
+                    reporte.Email = reader["Email"].ToString();
+                    reporte.Telefono = reader["Telefono"].ToString();
+                    reporte.Apellidos = reader["Apellidos"].ToString();
+                    reporte.IdRol = reader["IdRol"].ToString();
+                    reporte.SalarioBase = reader["SalarioBase"].ToString();
+                    reporte.BonoXHora = reader["BonoXHora"].ToString();
+                    reporte.SalarioBaseXMes = reader["SalarioBaseXMes"].ToString();
+                    reporte.EntregasXMes = reader["EntregasXMes"].ToString();
+                    reporte.Mes = reader["Mes"].ToString();
+                    reporte.AcumuladoBonosXEntrega = reader["AcumuladoBonosXEntrega"].ToString();
+                    reporte.AcumuladoBonoXRol = reader["AcumuladoBonoXRol"].ToString();
+                    reporte.SalarioBruto = reader["SalarioBruto"].ToString();
+                    reporte.ISR = reader["ISR"].ToString();
+                    reporte.ImpuestosAdicionales = reader["ImpuestosAdicionales"].ToString();
+                    reporte.ValesDespensa = reader["ValesDespensa"].ToString();
+                    Result.Add(reporte);
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex.Message);
+                _context.Database.CloseConnection();
+                return new List<ReporteNomina>();
+            }
+            finally
+            {
+                _context.Database.CloseConnection();
+            }
+            return Result;
         }
 
         public async Task<A01Empleados> GeEmpleadosById(long id)

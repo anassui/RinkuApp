@@ -21,8 +21,24 @@ namespace RinkuApp.Web.Areas.Empleados.Controllers
         [HttpGet("{id}")]
         public IActionResult Index(string id)
         {
-             var Reporte = _service.GetReporteNomina(id);
-            this.ViewBag.Empleados = Reporte;
+            var Reporte = _service.GetReporteNomina(id);
+            var reporteEmpleado = Reporte[0];
+            var ISR = Double.Parse(reporteEmpleado.ISR == null ? "0" : reporteEmpleado.ISR);
+            var SalarioBruto = Double.Parse(reporteEmpleado.SalarioBruto == null ? "0": reporteEmpleado.SalarioBruto);
+            var SalarioNetoAntesImpuestosAdicionales = SalarioBruto - ISR;
+            double SalarioNeto;
+            if (SalarioBruto > 10000)
+            {
+                var ImpuestosAdiciones = SalarioBruto * 0.3;
+                SalarioNeto = SalarioNetoAntesImpuestosAdicionales - ImpuestosAdiciones;
+            }
+            else {
+                SalarioNeto = SalarioBruto - ISR;
+            }
+            var BonosDespensa = SalarioNeto * .04;
+            this.ViewBag.SalarioNeto = SalarioNeto;
+            this.ViewBag.BonosDespensa = BonosDespensa;
+            this.ViewBag.Empleados = reporteEmpleado;
             return this.View();
         }
 

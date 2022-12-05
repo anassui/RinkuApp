@@ -4,3 +4,116 @@
 @{
     Layout = "_Layout";
 }
+<div class="nk-content-body">
+    <div class="nk-block-head">
+        <div class="nk-block-between g-3">
+            <div class="nk-block-head-content">
+                <h3 class="nk-block-title page-title">Nómina Empleado <strong class="text-primary small"> @this.ViewBag.Empleados.Nombre?.ToUpper()</strong><strong class="text-primary small"> @this.ViewBag.Empleados.Apellidos?.ToUpper()</strong></h3>
+                <div class="nk-block-des text-soft">
+                    <ul class="list-inline">
+                        <li>ID Empleado: <span class="text-base">@this.ViewBag.Empleados.IdEmpleado?.ToUpper()</span></li>
+                        <li>Fecha: <span class="text-base">18 Dec, 2022 01:02 PM</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="nk-block-head-content">
+                <a href="/A01Empleados" class="btn btn-outline-light bg-white d-none d-sm-inline-flex"><em class="icon ni ni-arrow-left"></em><span>Lista de Empleados</span></a>
+            </div>
+        </div>
+    </div><!-- .nk-block-head -->
+    <div class="nk-block">
+        <div class="invoice">
+            <div class="invoice-action">
+            </div><!-- .invoice-actions -->
+            <div class="invoice-wrap">
+                <div class="invoice-brand text-center">
+                </div>
+                <div class="invoice-head">
+                    <div class="invoice-contact">
+                        <span class="overline-title">Detalles</span>
+                        <div class="invoice-contact-info">
+                            <h4 class="title">@this.ViewBag.Empleados.Nombre?.ToUpper()</h4>   <h4 class="title">@this.ViewBag.Empleados.Apellidos?.ToUpper()</h4>
+                            <ul class="list-plain">
+                                <li><em class="icon ni ni-mail"></em><span>@this.ViewBag.Empleados.Email</span></li>
+                                <li><em class="icon ni ni-call-fill"></em><span>@this.ViewBag.Empleados.Telefono</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="invoice-desc">
+                        <h3 class="title">Rinku Nómina</h3>
+                        <ul class="list-plain">
+                            <li class="invoice-id"><span>ID Empleado:</span>:<span>@this.ViewBag.Empleados.IdEmpleado?.ToUpper()</span></li>
+                            <li class="invoice-date"><span>Fecha:</span>:<span>26 Jan, 2020</span></li>
+                        </ul>
+                    </div>
+                </div><!-- .invoice-head -->
+                <div class="invoice-bills">
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th class="w-150px">#</th>
+                                    <th class="w-60">Descripción</th>
+                                    <th>Cantidad</th>
+                                    <th>Bono</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Bonos Acumulados por Entrega</td>
+                                    <td>@this.ViewBag.Empleados.EntregasXMes?.ToUpper()</td>
+                                    <td>$@this.ViewBag.Empleados.AcumuladoBonosXEntrega?.ToUpper()</td>
+                                    <td>$@this.ViewBag.Empleados.AcumuladoBonosXEntrega?.ToUpper()</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Bonos Correspondientes al ROL:  <strong>@this.ViewBag.Empleados.IdRol?.ToUpper()</strong></td>
+                                    <td> - </td>
+                                    <td>$@this.ViewBag.Empleados.AcumuladoBonoXRol?.ToUpper()</td>
+                                    <td>$@this.ViewBag.Empleados.AcumuladoBonoXRol?.ToUpper()</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>Salario Bruto</td>
+                                    <td> - </td>
+                                    <td> - </td>
+                                    <td> <strong class="text-primary small">$@this.ViewBag.Empleados.SalarioBruto?.ToUpper()</strong></td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="2"></td>
+                                    <td colspan="2">Subtotal</td>
+                                    <td>$@this.ViewBag.Empleados.SalarioBruto?.ToUpper()</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2"></td>
+                                    <td colspan="2">Impuestos Adicionales:</td>
+                                    <td>$@this.ViewBag.Empleados.ImpuestosAdicionales?.ToUpper()</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2"></td>
+                                    <td colspan="2">Descuento ISR</td>
+                                    <td>$@this.ViewBag.Empleados.ISR?.ToUpper()</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2"></td>
+                                    <td colspan="2">Salario Neto:</td>
+                                    <td>$@this.ViewBag.SalarioNeto</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2"></td>
+                                    <td colspan="2">Bonos de Despensa</td>
+                                    <td>$@this.ViewBag.BonosDespensa</td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                        <div class="nk-notes ff-italic fs-12px text-soft"> Rinku App Sistema de Nómina. DGB. </div>
+                    </div>
+                </div><!-- .invoice-bills -->
+            </div><!-- .invoice-wrap -->
+        </div><!-- .invoice -->
+    </div><!-- .nk-block -->
+</div>
