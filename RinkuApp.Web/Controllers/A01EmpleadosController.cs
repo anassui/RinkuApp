@@ -61,7 +61,7 @@ namespace RinkuApp.Web.Areas.Empleados.Controllers
             }
             catch
             {
-                throw new ArgumentException("Fallo creación de usuario");
+                throw new ArgumentException("Fallo creación de Empleado");
             }
         }
 
@@ -75,7 +75,7 @@ namespace RinkuApp.Web.Areas.Empleados.Controllers
             }
             catch
             {
-                throw new ArgumentException("Fallo creación de usuario");
+                throw new ArgumentException("Fallo Actualización de Empleado");
             }
         }
 
@@ -89,7 +89,7 @@ namespace RinkuApp.Web.Areas.Empleados.Controllers
             }
             catch
             {
-                throw new ArgumentException("Fallo eliminacion de usuario");
+                throw new ArgumentException("Fallo eliminacion de Empleado");
             }
         }
 

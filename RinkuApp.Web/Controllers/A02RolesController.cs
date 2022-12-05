@@ -23,10 +23,16 @@ namespace RinkuApp.Web.Areas.Empleados.Controllers
             this.ViewBag.Roles = Roles;
             return this.View();
         }
-
-        [Route("Formulario")]
-        public IActionResult Formulario()
+         
+        [Route("Formulario/{id}")]
+        public async Task<IActionResult> Formulario(long id)
         {
+            this.ViewBag.Details = null;
+
+            if (id != 0)
+            {
+                this.ViewBag.Details = await _service.GetRolesById(id).ConfigureAwait(false);
+            }
             return this.View();
         }
 
@@ -43,8 +49,8 @@ namespace RinkuApp.Web.Areas.Empleados.Controllers
             return await _service.GetRolesById(id).ConfigureAwait(false);
         }
 
-        // POST: A02RolessController/Create
         [HttpPost]
+        [Route("Create")]
         public async Task Create(A02Roles A02Roles)
         {
             try
@@ -53,11 +59,10 @@ namespace RinkuApp.Web.Areas.Empleados.Controllers
             }
             catch
             {
-                throw new ArgumentException("Fallo creación de usuario");
+                throw new ArgumentException("Fallo creación de Rol");
             }
         }
 
-        // POST: A02RolessController/Create
         [HttpPut]
         [Route("update")]
         public async Task Update(A02Roles A02Roles)
@@ -68,12 +73,12 @@ namespace RinkuApp.Web.Areas.Empleados.Controllers
             }
             catch
             {
-                throw new ArgumentException("Fallo creación de usuario");
+                throw new ArgumentException("Fallo Actualización de Rol");
             }
         }
 
         [HttpDelete]
-        [Route("delete")]
+        [Route("delete/{id}")]
         public async Task Delete(long id)
         {
             try
@@ -82,7 +87,7 @@ namespace RinkuApp.Web.Areas.Empleados.Controllers
             }
             catch
             {
-                throw new ArgumentException("Fallo eliminacion de usuario");
+                throw new ArgumentException("Fallo eliminacion de Rol");
             }
         }
     }

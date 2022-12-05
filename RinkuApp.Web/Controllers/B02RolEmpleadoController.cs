@@ -24,9 +24,16 @@ namespace RinkuApp.Web.Areas.Empleados.Controllers
             return this.View();
         }
 
-        [Route("Formulario")]
-        public IActionResult Formulario()
+
+        [Route("Formulario/{id}")]
+        public async Task<IActionResult> Formulario(long id)
         {
+            this.ViewBag.Details = null;
+
+            if (id != 0)
+            {
+                this.ViewBag.Details = await _service.GetRolEmpleadoById(id).ConfigureAwait(false);
+            }
             return this.View();
         }
 
