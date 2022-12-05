@@ -46,6 +46,7 @@
                         <div class="nk-tb-list nk-tb-ulist is-compact">
                             <div class="nk-tb-item nk-tb-head">
                                 <div class="nk-tb-col"><span class="sub-text">ID Rol</span></div>
+                                <div class="nk-tb-col"><span class="sub-text">Salario x Hora (MXN)</span></div>
                                 <div class="nk-tb-col tb-col-md"><span class="sub-text">Descripción Rol</span></div>
                                 <div class="nk-tb-col"><span class="sub-text">Estatus</span></div>
                                 <div class="nk-tb-col nk-tb-col-tools text-end">
@@ -56,7 +57,7 @@
                                                 <li>
                                                     <div class="custom-control custom-control-sm custom-checkbox">
                                                         <input type="checkbox" class="custom-control-input" id="st">
-                                                        <label class="custom-control-label" for="st">Status</label>
+                                                        <label class="custom-control-label" for="st">Opciones</label>
                                                     </div>
                                                 </li>
                                             </ul>
@@ -76,6 +77,9 @@
                                                 <span class="tb-lead">@item.IdRol</span>
                                             </div>
                                         </div>
+                                    </div>
+                                    <div class="nk-tb-col tb-col-md">
+                                        <span>@item.Salario</span>
                                     </div>
                                     <div class="nk-tb-col tb-col-md">
                                         <span>@item.DescripcionRol</span>

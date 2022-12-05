@@ -42,7 +42,18 @@
                                     <div class="form-group">
                                         <div class="form-control-wrap">
                                             <div class="form-icon form-icon-right xl">
-                                                <em class="icon ni ni-user"></em>
+                                                <em class="icon ni ni-coin-alt"></em>
+                                            </div>
+                                            <input type="number" class="form-control form-control-xl form-control-outlined" id="salario" name="salario" value="@(this.ViewBag.Details is null ? "" : this.ViewBag.Details.Salario)">
+                                            <label class="form-label-outlined" for="outlined-normal">Salario x Hora (MXN)</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 col-sm-6">
+                                    <div class="form-group">
+                                        <div class="form-control-wrap">
+                                            <div class="form-icon form-icon-right xl">
+                                               <em class="icon ni ni-view-row-wd"></em>
                                             </div>
                                             <input type="text" class="form-control form-control-xl form-control-outlined" id="descripcion" name="descripcion" value="@(this.ViewBag.Details is null ? "" : this.ViewBag.Details.DescripcionRol)">
                                             <label class="form-label-outlined" for="outlined-normal">Descripción</label>
@@ -97,6 +108,7 @@
                     Id: @(this.ViewBag.Details is null ? 0 : this.ViewBag.Details.Id),
                     IdRol: '@this.ViewBag.Details' == null ? 0 : $("#idrol").val(),
                     DescripcionRol: $("#descripcion").val(),
+                    Salario: $("#salario").val(),
                     Estatus: 1,///$("#estatus").val(),
                     CreatedBy: '',
                     CreatedOn: moment().toISOString(),
@@ -142,6 +154,7 @@
                     body: JSON.stringify({
                         Id: 0,
                         IdRol: $("#idrol").val(),
+                        Salario: $("#salario").val(),
                         DescripcionRol: $("#descripcion").val(),
                         Estatus: 1,
                         CreatedBy: '',
