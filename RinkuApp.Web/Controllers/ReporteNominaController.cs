@@ -21,7 +21,9 @@ namespace RinkuApp.Web.Areas.Empleados.Controllers
         [HttpGet("{id}")]
         public IActionResult Index(string id)
         {
-            var Reporte = _service.GetReporteNomina(id);
+            DateTime FechaActual =  DateTime.Now;
+            var mesActual = FechaActual.Month;
+            var Reporte = _service.GetReporteNomina(id, mesActual);
             var reporteEmpleado = Reporte[0];
             var ISR = Double.Parse(reporteEmpleado.ISR == null ? "0" : reporteEmpleado.ISR);
             var SalarioBruto = Double.Parse(reporteEmpleado.SalarioBruto == null ? "0": reporteEmpleado.SalarioBruto);
@@ -29,7 +31,7 @@ namespace RinkuApp.Web.Areas.Empleados.Controllers
             double SalarioNeto;
             if (SalarioBruto > 10000)
             {
-                var ImpuestosAdiciones = SalarioBruto * 0.3;
+                var ImpuestosAdiciones = SalarioBruto * 0.03;
                 SalarioNeto = SalarioNetoAntesImpuestosAdicionales - ImpuestosAdiciones;
             }
             else {
@@ -39,6 +41,7 @@ namespace RinkuApp.Web.Areas.Empleados.Controllers
             this.ViewBag.SalarioNeto = SalarioNeto;
             this.ViewBag.BonosDespensa = BonosDespensa;
             this.ViewBag.Empleados = reporteEmpleado;
+            this.ViewBag.FechaNomina = FechaActual;
             return this.View();
         }
 

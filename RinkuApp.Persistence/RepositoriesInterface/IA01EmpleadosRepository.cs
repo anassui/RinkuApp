@@ -9,7 +9,7 @@ namespace RinkuApp.Persistence.RepositoriesInterface
         List<EmpleadoModel> GetEmpleadoslist();
         Task<A01Empleados> GeEmpleadosById(long id);
         List<EmpleadoModel> GeEmpleadosViewById(long id);
-        public List<ReporteNomina> GetReporteNomina(string IdEmpleado);
+        public List<ReporteNomina> GetReporteNomina(string IdEmpleado, int MesReporte);
         Task Update(A01Empleados A01Empleados);
 
         Task Create(A01Empleados A01Empleados);

@@ -12,7 +12,7 @@
                 <div class="nk-block-des text-soft">
                     <ul class="list-inline">
                         <li>ID Empleado: <span class="text-base">@this.ViewBag.Empleados.IdEmpleado?.ToUpper()</span></li>
-                        <li>Fecha: <span class="text-base">18 Dec, 2022 01:02 PM</span></li>
+                        <li>Fecha: <span class="text-base">@this.ViewBag.FechaNomina</span></li>
                     </ul>
                 </div>
             </div>
@@ -43,7 +43,7 @@
                         <h3 class="title">Rinku Nómina</h3>
                         <ul class="list-plain">
                             <li class="invoice-id"><span>ID Empleado:</span>:<span>@this.ViewBag.Empleados.IdEmpleado?.ToUpper()</span></li>
-                            <li class="invoice-date"><span>Fecha:</span>:<span>26 Jan, 2020</span></li>
+                            <li class="invoice-date"><span>Fecha:</span>:<span>@this.ViewBag.FechaNomina</span></li>
                         </ul>
                     </div>
                 </div><!-- .invoice-head -->
@@ -86,27 +86,27 @@
                                 <tr>
                                     <td colspan="2"></td>
                                     <td colspan="2">Subtotal</td>
-                                    <td>$@this.ViewBag.Empleados.SalarioBruto?.ToUpper()</td>
+                                    <td>$@this.ViewBag.Empleados.SalarioBruto</td>
                                 </tr>
                                 <tr>
                                     <td colspan="2"></td>
                                     <td colspan="2">Impuestos Adicionales:</td>
-                                    <td>$@this.ViewBag.Empleados.ImpuestosAdicionales?.ToUpper()</td>
+                                    <td>$@this.ViewBag.Empleados.ImpuestosAdicionales</td>
                                 </tr>
                                 <tr>
                                     <td colspan="2"></td>
                                     <td colspan="2">Descuento ISR</td>
-                                    <td>$@this.ViewBag.Empleados.ISR?.ToUpper()</td>
+                                    <td>$@this.ViewBag.Empleados.ISR</td>
                                 </tr>
                                 <tr>
                                     <td colspan="2"></td>
                                     <td colspan="2">Salario Neto:</td>
-                                    <td>$@this.ViewBag.SalarioNeto</td>
+                                    <td>$@this.ViewBag.SalarioNeto.ToString("F")</td>
                                 </tr>
                                 <tr>
                                     <td colspan="2"></td>
                                     <td colspan="2">Bonos de Despensa</td>
-                                    <td>$@this.ViewBag.BonosDespensa</td>
+                                    <td>$@this.ViewBag.BonosDespensa.ToString("F")</td>
                                 </tr>
                             </tfoot>
                         </table>

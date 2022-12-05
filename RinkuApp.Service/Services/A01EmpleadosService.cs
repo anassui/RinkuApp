@@ -37,9 +37,9 @@ namespace RinkuApp.Service.Services
             return _repository.GetEmpleadoslist();
         }
 
-        public List<ReporteNomina> GetReporteNomina(string IdEmpleado)
+        public List<ReporteNomina> GetReporteNomina(string IdEmpleado, int MesReporte)
         {
-            return _repository.GetReporteNomina(IdEmpleado);
+            return _repository.GetReporteNomina(IdEmpleado, MesReporte);
         }
 
         public async Task<A01Empleados> GeEmpleadosById(long id)

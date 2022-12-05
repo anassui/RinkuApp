@@ -11,25 +11,11 @@
             <div class="nk-block-head-content">
                 <h3 class="nk-block-title page-title">Detalle Empleado </h3>
             </div><!-- .nk-block-head-content -->
-            <div class="nk-block-head-content">
-                <div class="toggle-wrap nk-block-tools-toggle">
-                    <a href="#" class="btn btn-icon btn-trigger toggle-expand me-n1" data-target="pageMenu"><em class="icon ni ni-menu-alt-r"></em></a>
-            @*        <div class="toggle-expand-content" data-content="pageMenu">
-                        <ul class="nk-block-tools g-3">
-                            <li class="nk-block-tools-opt">
-                                <div class="drodown">
-                                    <a href="#" class="dropdown-toggle btn btn-icon btn-primary" data-bs-toggle="dropdown"><em class="icon ni ni-plus"></em></a>
-                                    <div class="dropdown-menu dropdown-menu-end">
-                                        <ul class="link-list-opt no-bdr">
-                                            <li><a href="/B02RolEmpleado/Formulario"><span>Asignar Rol a Empleado</span></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>*@
-                </div><!-- .toggle-wrap -->
-            </div><!-- .nk-block-head-content -->
+            <div class="nk-block-between g-3">
+                <div class="nk-block-head-content">
+                    <a href="/A01Empleados" class="btn btn-outline-light bg-white d-none d-sm-inline-flex"><em class="icon ni ni-arrow-left"></em><span>Lista de Empleados</span></a>
+                </div>
+            </div>
         </div><!-- .nk-block-between -->
     </div><!-- .nk-block-head -->
     <div class="nk-block">
@@ -75,7 +61,7 @@
                                                 <span>#</span>
                                             </div>
                                             <div class="user-name">
-                                                <span class="tb-lead">@item.IdEmpleado</span>
+                                                <span class="tb-lead">@item.IdEmpleado?.ToUpper()</span>
                                             </div>
                                         </div>
                                     </div>

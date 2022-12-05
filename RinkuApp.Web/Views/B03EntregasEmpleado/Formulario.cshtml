@@ -20,7 +20,7 @@
                         <div class="preview-block">
                             <span class="preview-title-lg overline-title">Capture la información de las entregas por Empleado.</span>
                             <div class="row gy-4">
-                                <div class="col-lg-4 col-sm-6">
+                                <div class="col-lg-6 col-sm-6">
                                     <div class="form-group">
                                         <div class="form-control-wrap">
                                             <div class="form-icon form-icon-right xl">
@@ -31,7 +31,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-4 col-sm-6">
+                                <div class="col-lg-6 col-sm-6">
                                     <div class="form-group">
                                         <div class="form-control-wrap">
                                             <div class="form-icon form-icon-right xl">
@@ -39,17 +39,6 @@
                                             </div>
                                             <input type="number" class="form-control form-control-xl form-control-outlined" id="entregas" name="entregas">
                                             <label class="form-label-outlined" for="outlined-normal">Cantidad Entregas</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-sm-6">
-                                    <div class="form-group">
-                                        <div class="form-control-wrap">
-                                            <div class="form-icon form-icon-right xl">
-                                                <em class="icon ni ni-calendar-alt"></em>
-                                            </div>
-                                            <input type="text" class="form-control form-control-xl form-control-outlined date-picker" id="fecha" name="fecha">
-                                            <label class="form-label-outlined" for="outlined-date-picker">Fecha Entrega</label>
                                         </div>
                                     </div>
                                 </div>
@@ -83,7 +72,7 @@
                     Id: @(this.ViewBag.Details is null ? 0 : this.ViewBag.Details.Id),
                     IdEmpleado: '@(this.ViewBag.Details is null ? 0 : this.ViewBag.Details.IdEmpleado)',
                     CantidadEntregas: $("#entregas").val(),
-                    FechaEntrega:$("#fecha").val(),
+                    FechaEntrega:moment().toISOString(),
                     CreatedBy: '',
                     CreatedOn: moment().toISOString(),
                     LastModifiedBy: '',
@@ -119,9 +108,9 @@
             },
             submitHandler: function (form) {
                 let uniqueId = Date.now().toString(36) + Math.random().toString(36).substring(2);
-                var FORMAT_DATE = 'DD/MM/YYYY'
-                var fecha = moment($("#fecha").val(), FORMAT_DATE)
-                var fechaParse = new Date(fecha);
+                //var FORMAT_DATE = 'DD/MM/YYYY'
+                //var fecha = moment($("#fecha").val(), FORMAT_DATE)
+                //var fechaParse = new Date(fecha);
                 fetch(`/B03EntregasEmpleado/Create`, {
                     method: 'POST',
                     headers: {
@@ -131,7 +120,7 @@
                         Id: 0,
                         IdEmpleado: '@(this.ViewBag.Details is null ? 0 : this.ViewBag.Details.IdEmpleado)',
                         CantidadEntregas: $("#entregas").val(),
-                        FechaEntrega: fechaParse,
+                        FechaEntrega: moment().toISOString(),
                         CreatedBy: '',
                         CreatedOn: moment().toISOString(),
                         LastModifiedBy: '',

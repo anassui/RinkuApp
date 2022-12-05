@@ -99,7 +99,7 @@ namespace RinkuApp.Persistence.Repositories
             return entryPoint.ToList();
         }
 
-        public List<ReporteNomina> GetReporteNomina(string IdEmpleado)
+        public List<ReporteNomina> GetReporteNomina(string IdEmpleado, int MesReporte)
         {
 
             List<ReporteNomina> Result = new List<ReporteNomina>();
@@ -112,12 +112,18 @@ namespace RinkuApp.Persistence.Repositories
                     Value = IdEmpleado,
                     SqlDbType = SqlDbType.VarChar,
                     Size = 50
+                },
+                new SqlParameter
+                {
+                    ParameterName = "MesReporte",
+                    Value = MesReporte,
+                    SqlDbType = SqlDbType.SmallInt
                 }
             };
             try
             {
                 using var command = _context.Database.GetDbConnection().CreateCommand();
-                command.CommandText = "SP_Reporte_Nomina @IdEmpleado";
+                command.CommandText = "SP_Reporte_Nomina @IdEmpleado, @MesReporte";
                 command.Parameters.AddRange(parameters);
                 command.CommandTimeout = 18000;
                 _context.Database.OpenConnection();

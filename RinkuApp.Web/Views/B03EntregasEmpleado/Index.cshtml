@@ -12,7 +12,10 @@
                 <h3 class="nk-block-title page-title">Entregas Empleado: @this.ViewBag.Nombre </h3>
             </div><!-- .nk-block-head-content -->
             <div class="nk-block-head-content">
-                <div class="toggle-wrap nk-block-tools-toggle">
+                <a href="/A01Empleados" class="btn btn-outline-light bg-white d-none d-sm-inline-flex"><em class="icon ni ni-arrow-left"></em><span>Lista de Empleados</span></a>
+            </div>
+            <div class="nk-block-head-content">
+@*                <div class="toggle-wrap nk-block-tools-toggle">
                     <a href="#" class="btn btn-icon btn-trigger toggle-expand me-n1" data-target="pageMenu"><em class="icon ni ni-menu-alt-r"></em></a>
                     <div class="toggle-expand-content" data-content="pageMenu">
                         <ul class="nk-block-tools g-3">
@@ -28,7 +31,7 @@
                             </li>
                         </ul>
                     </div>
-                </div><!-- .toggle-wrap -->
+                </div><!-- .toggle-wrap -->*@
             </div><!-- .nk-block-head-content -->
         </div><!-- .nk-block-between -->
     </div><!-- .nk-block-head -->
@@ -47,21 +50,6 @@
                             <div class="nk-tb-item nk-tb-head">
                                 <div class="nk-tb-col tb-col-md"><span class="sub-text">Cantidad Entregas</span></div>
                                 <div class="nk-tb-col"><span class="sub-text">Fecha Entrega</span></div>
-                                <div class="nk-tb-col nk-tb-col-tools text-end">
-                                    <div class="dropdown">
-                                        <a href="#" class="btn btn-xs btn-outline-light btn-icon dropdown-toggle" data-bs-toggle="dropdown" data-offset="0,5"><em class="icon ni ni-plus"></em></a>
-                                        <div class="dropdown-menu dropdown-menu-xs dropdown-menu-end">
-                                            <ul class="link-tidy sm no-bdr">
-                                                <li>
-                                                    <div class="custom-control custom-control-sm custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input" id="st">
-                                                        <label class="custom-control-label" for="st">Status</label>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
                             </div><!-- .nk-tb-item -->
                             @foreach (var item in this.ViewBag.entregasEmpleados)
                             {
