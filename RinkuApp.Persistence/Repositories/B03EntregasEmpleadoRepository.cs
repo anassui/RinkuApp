@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using RinkuApp.Persistence.Data;
+using RinkuApp.Persistence.DTOs;
 using RinkuApp.Persistence.Models;
 using RinkuApp.Persistence.RepositoriesInterface;
 namespace RinkuApp.Persistence.Repositories
@@ -85,6 +86,31 @@ namespace RinkuApp.Persistence.Repositories
         public List<B03EntregasEmpleado> GetEntregasXEmpleadolist()
         {
             return _context.B03EntregasEmpleado.ToList();
+        }
+
+
+        public List<EntregasEmpleadoView> GetEntregasView(string IdEmpleado)
+        {
+            IQueryable<EntregasEmpleadoView> entryPoint = (from src in _context.B03EntregasEmpleado
+                                                        join B02 in _context.B02RolEmpleado on new { Empleado = src.IdEmpleado } equals new { Empleado = B02.IdEmpleado } into joinRolEmpleado
+                                                        from joinB02 in joinRolEmpleado.DefaultIfEmpty()
+                                                        join Empleados in _context.A01Empleados on new { Empleado = src.IdEmpleado } equals new { Empleado = Empleados.IdEmpleado } into joinEmpleados
+                                                        from joinA01 in joinEmpleados.DefaultIfEmpty()
+                                                    select new EntregasEmpleadoView
+                                                    {
+                                                        Id = src.Id,
+                                                        IdEmpleado = src.IdEmpleado,
+                                                        Nombre = joinA01.Nombre,
+                                                        Rol = joinB02.IdRol,
+                                                        CantidadEntregas = src.CantidadEntregas,
+                                                        FechaEntrega = src.FechaEntrega,
+                                                        CreatedBy = src.CreatedBy,
+                                                        CreatedOn = src.CreatedOn,
+                                                        LastModifiedBy = src.LastModifiedBy,
+                                                        LastModifiedOn = src.LastModifiedOn,
+
+                                                    });
+            return entryPoint.Where(e => e.IdEmpleado == IdEmpleado).ToList();
         }
     }
 }

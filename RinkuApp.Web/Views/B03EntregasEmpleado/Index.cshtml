@@ -5,11 +5,11 @@
 @{
     Layout = "_Layout";
 }
-<<div class="nk-content-body">
+<div class="nk-content-body">
     <div class="nk-block-head nk-block-head-sm">
         <div class="nk-block-between">
             <div class="nk-block-head-content">
-                <h3 class="nk-block-title page-title">Entregas Por Empleado</h3>
+                <h3 class="nk-block-title page-title">Entregas Empleado: @this.ViewBag.Nombre </h3>
             </div><!-- .nk-block-head-content -->
             <div class="nk-block-head-content">
                 <div class="toggle-wrap nk-block-tools-toggle">
@@ -45,7 +45,6 @@
                     <div class="card-inner p-0">
                         <div class="nk-tb-list nk-tb-ulist is-compact">
                             <div class="nk-tb-item nk-tb-head">
-                                <div class="nk-tb-col"><span class="sub-text">ID Empleadol</span></div>
                                 <div class="nk-tb-col tb-col-md"><span class="sub-text">Cantidad Entregas</span></div>
                                 <div class="nk-tb-col"><span class="sub-text">Fecha Entrega</span></div>
                                 <div class="nk-tb-col nk-tb-col-tools text-end">
@@ -64,27 +63,19 @@
                                     </div>
                                 </div>
                             </div><!-- .nk-tb-item -->
-                            <div class="nk-tb-item">
-                                @foreach (var item in this.ViewBag.entregasEmpleados)
-                                {
-                                    <div class="nk-tb-col">
-                                        <div class="user-card">
-                                            <div class="user-avatar xs bg-primary">
-                                                <span>#</span>
-                                            </div>
-                                            <div class="user-name">
-                                                <span class="tb-lead">@item.IdEmpleado</span>
-                                            </div>
-                                        </div>
-                                    </div>
+                            @foreach (var item in this.ViewBag.entregasEmpleados)
+                            {
+                                <div class="nk-tb-item">
                                     <div class="nk-tb-col tb-col-md">
                                         <span>@item.CantidadEntregas</span>
                                     </div>
                                     <div class="nk-tb-col">
                                         <span class="tb-status text-success">@item.FechaEntrega</span>
                                     </div>
-                                }
-                            </div><!-- .nk-tb-item -->
+                                </div>
+
+                                <!-- .nk-tb-item -->
+                            }
                         </div><!-- .nk-tb-list -->
                     </div><!-- .card-inner -->
                 </div><!-- .card-inner-group -->

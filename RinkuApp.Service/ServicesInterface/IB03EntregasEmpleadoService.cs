@@ -1,4 +1,5 @@
-﻿using RinkuApp.Persistence.Models;
+﻿using RinkuApp.Persistence.DTOs;
+using RinkuApp.Persistence.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,7 @@ namespace RinkuApp. Services.ServicesInterface
 
         Task<IEnumerable<B03EntregasEmpleado>> GetEntregasEmpleado();
         List<B03EntregasEmpleado> GetEntregasXEmpleadolist();
+        List<EntregasEmpleadoView> GetEntregasView(string IdEmpleado);
         Task<B03EntregasEmpleado> GetEntregasEmpleadoById(long id);
 
         Task Update(B03EntregasEmpleado B03EntregasEmpleado);

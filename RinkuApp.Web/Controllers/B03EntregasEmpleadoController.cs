@@ -10,17 +10,22 @@ namespace RinkuApp.Web.Areas.Empleados.Controllers
     public class B03EntregasEmpleadoController : Controller
     {
         private readonly IB03EntregasEmpleadoService _service;
+        private readonly IA01EmpleadosService _serviceA01;
         private readonly ILogger<B03EntregasEmpleadoController> _logger;
-        public B03EntregasEmpleadoController(IB03EntregasEmpleadoService service, ILogger<B03EntregasEmpleadoController> logger)
+        public B03EntregasEmpleadoController(IB03EntregasEmpleadoService service, ILogger<B03EntregasEmpleadoController> logger, IA01EmpleadosService serviceA01)
         {
             _service = service;
             _logger = logger;
+            _serviceA01 = serviceA01;
         }
 
-        public IActionResult Index()
+        [HttpGet]
+        [Route("{idEmpleado}")]
+        public IActionResult Index(string idEmpleado)
         {
-            var entregasEmpleados = _service.GetEntregasXEmpleadolist();
+            var entregasEmpleados = _service.GetEntregasView(idEmpleado);
             this.ViewBag.entregasEmpleados = entregasEmpleados;
+            this.ViewBag.Nombre = entregasEmpleados[0].Nombre;
             return this.View();
         }
 
@@ -32,7 +37,8 @@ namespace RinkuApp.Web.Areas.Empleados.Controllers
 
             if (id != 0)
             {
-                this.ViewBag.Details = await _service.GetEntregasEmpleadoById(id).ConfigureAwait(false);
+                //this.ViewBag.Details = await _service.GetEntregasEmpleadoById(id).ConfigureAwait(false);
+                this.ViewBag.Details = await _serviceA01.GeEmpleadosById(id).ConfigureAwait(false);
             }
             return this.View();
         }
@@ -44,14 +50,9 @@ namespace RinkuApp.Web.Areas.Empleados.Controllers
             return await _service.GetEntregasEmpleado().ConfigureAwait(false);
         }
 
-        [HttpGet("{id}")]
-        public async Task<B03EntregasEmpleado> GetById(long id)
-        {
-            return await _service.GetEntregasEmpleadoById(id).ConfigureAwait(false);
-        }
-
         // POST: B03EntregasEmpleadosController/Create
         [HttpPost]
+        [Route("Create")]
         public async Task Create(B03EntregasEmpleado B03EntregasEmpleado)
         {
             try
@@ -60,7 +61,7 @@ namespace RinkuApp.Web.Areas.Empleados.Controllers
             }
             catch
             {
-                throw new ArgumentException("Fallo creación de usuario");
+                throw new ArgumentException("Fallo creación de Entrega");
             }
         }
 

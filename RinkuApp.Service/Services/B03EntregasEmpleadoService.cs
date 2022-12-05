@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using RinkuApp.Persistence.Data;
+using RinkuApp.Persistence.DTOs;
 using RinkuApp.Persistence.Models;
 using RinkuApp.Persistence.RepositoriesInterface;
 using RinkuApp. Services.ServicesInterface;
@@ -49,6 +50,12 @@ namespace RinkuApp.Service.Services
         public List<B03EntregasEmpleado> GetEntregasXEmpleadolist()
         {
             return _repository.GetEntregasXEmpleadolist();
+        }
+
+        public List<EntregasEmpleadoView> GetEntregasView(string IdEmpleado)
+        {
+            return _repository.GetEntregasView(IdEmpleado);
+
         }
     }
 }

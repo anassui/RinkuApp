@@ -10,11 +10,11 @@
         <div class="nk-block nk-block-lg">
             <div class="nk-block-head">
                 <div class="nk-block-head-content">
-                    <h4 class="title nk-block-title">Registrar Entregas por Empleado</h4>
+                    <h4 class="title nk-block-title">Registrar Entrega</h4>
                 </div>
             </div>
 
-            <form action="#" class="form-validate is-alter" autocomplete="off" novalidate="novalidate">
+            <form action="#" class="form-validate is-alter" id="entregas-form" autocomplete="off" novalidate="novalidate">
                 <div class="card card-bordered card-preview">
                     <div class="card-inner">
                         <div class="preview-block">
@@ -26,8 +26,8 @@
                                             <div class="form-icon form-icon-right xl">
                                                 <em class="icon ni ni-user"></em>
                                             </div>
-                                            <input type="text" class="form-control form-control-xl form-control-outlined" id="outlined-normal">
-                                            <label class="form-label-outlined" for="outlined-normal">ID Empleado</label>
+                                            <input type="text" class="form-control form-control-xl form-control-outlined" id="nombre" name="nombre" disabled value="@(this.ViewBag.Details is null ? "" : (this.ViewBag.Details.Nombre + ' ' + this.ViewBag.Details.Apellidos))">
+                                            <label class="form-label-outlined" for="outlined-normal">Empleado</label>
                                         </div>
                                     </div>
                                 </div>
@@ -37,7 +37,7 @@
                                             <div class="form-icon form-icon-right xl">
                                                 <em class="icon ni ni-user"></em>
                                             </div>
-                                            <input type="text" class="form-control form-control-xl form-control-outlined" id="outlined-normal">
+                                            <input type="number" class="form-control form-control-xl form-control-outlined" id="entregas" name="entregas">
                                             <label class="form-label-outlined" for="outlined-normal">Cantidad Entregas</label>
                                         </div>
                                     </div>
@@ -48,7 +48,7 @@
                                             <div class="form-icon form-icon-right xl">
                                                 <em class="icon ni ni-calendar-alt"></em>
                                             </div>
-                                            <input type="text" class="form-control form-control-xl form-control-outlined date-picker" id="outlined-date-picker">
+                                            <input type="text" class="form-control form-control-xl form-control-outlined date-picker" id="fecha" name="fecha">
                                             <label class="form-label-outlined" for="outlined-date-picker">Fecha Entrega</label>
                                         </div>
                                     </div>
@@ -56,7 +56,7 @@
                             </div>
                             <div class="row pt-4">
                                 <div class="form-group">
-                                    <button class="btn btn-lg btn-primary btn-block">Registrar</button>
+                                    <button class="btn btn-lg btn-primary btn-block">Registrar Entrega</button>
                                 </div>
                             </div>
                         </div>
@@ -69,3 +69,96 @@
 
     </div><!-- .components-preview -->
 </div>
+@section scripts  {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment-with-locales.min.js"></script>
+    <script>
+
+        function Update() {
+            fetch(`/B03EntregasEmpleado/Update`, {
+                method: 'PUT',
+                headers: {
+                    'Content-type': 'application/json',
+                },
+                body: JSON.stringify({
+                    Id: @(this.ViewBag.Details is null ? 0 : this.ViewBag.Details.Id),
+                    IdEmpleado: '@(this.ViewBag.Details is null ? 0 : this.ViewBag.Details.IdEmpleado)',
+                    CantidadEntregas: $("#entregas").val(),
+                    FechaEntrega:$("#fecha").val(),
+                    CreatedBy: '',
+                    CreatedOn: moment().toISOString(),
+                    LastModifiedBy: '',
+                    LastModifiedOn: moment().toISOString(),
+                })
+            }).then(function (response) {
+                if (response.ok) {
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'Guardado correctamente',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                    setTimeout(function () {
+                        window.location.href = '/A01Empleados';
+                    }, 1000);
+                    return response.json();
+                }
+                return Promise.reject(response);
+            }).then(data => {
+                console.log('Success:', id);
+            }).catch(function (error) {
+                console.log('BLAH BLAH BLAH', error);
+            });
+        }
+
+        $("#entregas-form").validate({
+            rules: {
+                // compound rule
+                entregas: { required: true },
+                fecha: { required: true },
+            },
+            submitHandler: function (form) {
+                let uniqueId = Date.now().toString(36) + Math.random().toString(36).substring(2);
+                var FORMAT_DATE = 'DD/MM/YYYY'
+                var fecha = moment($("#fecha").val(), FORMAT_DATE)
+                var fechaParse = new Date(fecha);
+                fetch(`/B03EntregasEmpleado/Create`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        Id: 0,
+                        IdEmpleado: '@(this.ViewBag.Details is null ? 0 : this.ViewBag.Details.IdEmpleado)',
+                        CantidadEntregas: $("#entregas").val(),
+                        FechaEntrega: fechaParse,
+                        CreatedBy: '',
+                        CreatedOn: moment().toISOString(),
+                        LastModifiedBy: '',
+                        LastModifiedOn: moment().toISOString(),
+                    })
+                }).then(function (response) {
+                    if (response.ok) {
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: 'Guardado correctamente',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                        setTimeout(function () {
+                            window.location.href = '/B03EntregasEmpleado/' + '@this.ViewBag.Details.IdEmpleado'
+                        }, 1000);
+                        return response.json();
+                    }
+                    return Promise.reject(response);
+                }).then(data => {
+                    console.log('Success:', id);
+                }).catch(function (error) {
+                    console.log('BLAH BLAH BLAH', error);
+                });
+            }
+        });
+    </script>
+
+}
