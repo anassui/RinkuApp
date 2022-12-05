@@ -69,7 +69,6 @@
                                         </div>
                                     </div>
                                 </div>
-
                                 <div class="col-lg-6 col-sm-6">
                                     <div class="form-group">
                                         <div class="form-control-wrap">
@@ -77,7 +76,7 @@
                                                 <em class="icon ni ni-phone"></em>
                                             </div>
                                             <input type="text" class="form-control form-control-xl form-control-outlined" id="telefono" name="telefono" value="@(this.ViewBag.Details is null ? "" : this.ViewBag.Details.Telefono)">
-                                            <label class="form-label-outlined" for="outlined-right-icon">Telefono</label>
+                                            <label class="form-label-outlined" for="outlined-right-icon">Teléfono</label>
                                         </div>
                                     </div>
                                 </div>
@@ -96,14 +95,32 @@
                                     <div class="preview-block">
                                         <span class="preview-title overline-title">Active o desactive el estatus del empleado.</span>
                                         <div class="custom-control custom-checkbox checked">
-                                            <input type="checkbox" class="custom-control-input" id="estatus" name="estatus" >
+                                            <input type="checkbox" class="custom-control-input" id="estatus" name="estatus" value="@(this.ViewBag.Details is null ? 0 : this.ViewBag.Details.Estatus)">
                                             <label class="custom-control-label" for="estatus">Estatus</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 col-sm-6">
+                                    <div class="preview-block">
+                                        <span class="preview-title overline-title">Asigne el Rol al Empleado</span>
+                                        <div class="form-group">
+                                            <label class="form-label" for="default-06">Roles</label>
+                                            <div class="form-control-wrap ">
+                                                <div class="form-control-select">
+                                                    <select class="form-control" id="idrol" name="idrol">
+                                                        @foreach (var item in this.ViewBag.Roles)
+                                                        {
+                                                            <option value="@item.IdRol">@item.IdRol</option>
+                                                        }
+                                                    </select>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="row pt-4">
-                                @if(this.ViewBag.Details is null) 
+                                @if (this.ViewBag.Details is null)
                                 {
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-lg btn-primary btn-block">Registrar</button>
@@ -116,7 +133,7 @@
                                     </div>
                                 }
 
-                                
+
                             </div>
                         </div>
 
@@ -127,19 +144,19 @@
     </div>
 </div>
 @section scripts  {
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment-with-locales.min.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment-with-locales.min.js"></script>
     <script>
-   
-        function Update()
-        {
+
+        function Update() {
             fetch(`/A01Empleados/Update`, {
                 method: 'PUT',
                 headers: {
                     'Content-type': 'application/json',
                 },
-                body: JSON.stringify({ 
+                body: JSON.stringify({
                     Id: @(this.ViewBag.Details is null ? 0 : this.ViewBag.Details.Id),
-                    IdEmpleado:'@(this.ViewBag.Details is null ? 0 : this.ViewBag.Details.IdEmpleado)',
+                    IdEmpleado: '@(this.ViewBag.Details is null ? 0 : this.ViewBag.Details.IdEmpleado)',
+                    IdRol: $("#idrol").val(),
                     Nombre: $("#nombre").val(),
                     Apellidos: $("#apellidos").val(),
                     Edad: $("#edad").val(),
@@ -151,7 +168,8 @@
                     CreatedBy: '',
                     CreatedOn: moment().toISOString(),
                     LastModifiedBy: '',
-                    LastModifiedOn: moment().toISOString()
+                    LastModifiedOn: moment().toISOString(),
+                    FechaComienzoRol: moment().toISOString()
                 })
             }).then(function (response) {
                 if (response.ok) {
@@ -186,7 +204,7 @@
             },
             submitHandler: function (form) {
                 let uniqueId = Date.now().toString(36) + Math.random().toString(36).substring(2);
-                          
+
                 fetch(`/A01Empleados/Create`, {
                     method: 'POST',
                     headers: {
@@ -196,6 +214,7 @@
                         Id: 0,
                         IdEmpleado: uniqueId,
                         Nombre: $("#nombre").val(),
+                        IdRol: $("#idrol").val(),
                         Apellidos: $("#apellidos").val(),
                         Edad: $("#edad").val(),
                         Sexo: $("#sexo").val(),
@@ -206,7 +225,8 @@
                         CreatedBy: '',
                         CreatedOn: moment().toISOString(),
                         LastModifiedBy: '',
-                        LastModifiedOn: moment().toISOString()
+                        LastModifiedOn: moment().toISOString(),
+                        FechaComienzoRol: moment().toISOString()
                     })
                 }).then(function (response) {
                     if (response.ok) {

@@ -15,8 +15,11 @@ namespace RinkuApp.Persistence.Models
         [Column("DescripcionRol"), Required, Display(Name = "DescripcionRol"), StringLength(300)]
         public string? DescripcionRol { get; set; }
 
-        [Column("Salario"), Required, Display(Name = "Salario"), StringLength(300)]
-        public string? Salario { get; set; }
+        [Column("BonoXHora"), Required, Display(Name = "BonoXHora"), StringLength(300)]
+        public string? BonoXHora { get; set; }
+
+        [Column("SalarioBase"), Required, Display(Name = "SalarioBase"), StringLength(300)]
+        public string? SalarioBase { get; set; }
 
         [Column("Estatus"), Display(Name = "Estatus")]
         public int Estatus { get; set; }

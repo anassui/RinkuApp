@@ -6,8 +6,9 @@ namespace RinkuApp.Persistence.RepositoriesInterface
     public interface IA01EmpleadosRepository
     {
         Task<IEnumerable<A01Empleados>> GetEmpleados();
-        List<A01Empleados> GetEmpleadoslist();
+        List<EmpleadoModel> GetEmpleadoslist();
         Task<A01Empleados> GeEmpleadosById(long id);
+        List<EmpleadoModel> GeEmpleadosViewById(long id);
         public List<ReporteNomina> GetReporteNomina(string IdEmpleado);
         Task Update(A01Empleados A01Empleados);
 

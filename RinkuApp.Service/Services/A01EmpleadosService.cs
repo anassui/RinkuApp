@@ -32,7 +32,7 @@ namespace RinkuApp.Service.Services
             return await _repository.Delete(id).ConfigureAwait(false);
         }
 
-        public List<A01Empleados> GetEmpleadoslist()
+        public List<EmpleadoModel> GetEmpleadoslist()
         {
             return _repository.GetEmpleadoslist();
         }
@@ -45,6 +45,11 @@ namespace RinkuApp.Service.Services
         public async Task<A01Empleados> GeEmpleadosById(long id)
         {
             return await _repository.GeEmpleadosById(id).ConfigureAwait(false);
+        }
+
+        public List<EmpleadoModel> GeEmpleadosViewById(long id)
+        {
+            return _repository.GeEmpleadosViewById(id);
         }
     }
 }

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Text.Json;
+using RinkuApp.Persistence.DTOs;
 
 namespace RinkuApp.Persistence.Models
 {
@@ -36,18 +37,24 @@ namespace RinkuApp.Persistence.Models
         [Column("last_modified_on")]
         public DateTime? LastModifiedOn { get; set; }
 
+        public B02RolEmpleado()
+        {
+        }
 
-        //public B02RolEmpleado(B02RolEmpleado src)
-        //{
-        //    Id = src.Id;
-        //    IdEmpleado = src.IdEmpleado;
-        //    IdRol = src.IdRol;
-        //    FechaComienzoRol = src.FechaComienzoRol;
-        //    CreatedBy = src.CreatedBy;
-        //    CreatedOn = src.CreatedOn;
-        //    LastModifiedBy = src.LastModifiedBy;
-        //    LastModifiedOn = src.LastModifiedOn;
-        //}
+        public B02RolEmpleado(EmpleadoModel src)
+        {
+            Id = src.Id;
+            IdEmpleado = src.IdEmpleado;
+            IdRol = src.IdRol;
+            FechaComienzoRol = src.FechaComienzoRol;
+            CreatedBy = src.CreatedBy;
+            CreatedOn = src.CreatedOn;
+            LastModifiedBy = src.LastModifiedBy;
+            LastModifiedOn = src.LastModifiedOn;
+        }
+
+
+
 
         public void UpdateFromJson(JsonElement jsonrecord)
         {

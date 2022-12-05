@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using RinkuApp.Persistence.Data;
+using RinkuApp.Persistence.DTOs;
 using RinkuApp.Persistence.Models;
 using RinkuApp.Persistence.RepositoriesInterface;
 using RinkuApp. Services.ServicesInterface;
@@ -52,5 +53,14 @@ namespace RinkuApp.Service.Services
             return _repository.GetRolesXEmpleadolist();
         }
 
+        public List<EmpleadosRoles> GetRolEmpleadoView(string IdEmpleado)
+        {
+            return _repository.GetRolEmpleadoView(IdEmpleado);
+        }
+
+        public B02RolEmpleado GetRolByIdEmpleado(string IdEmpleado)
+        {
+            return _repository.GetRolByIdEmpleado(IdEmpleado);
+        }
     }
 }

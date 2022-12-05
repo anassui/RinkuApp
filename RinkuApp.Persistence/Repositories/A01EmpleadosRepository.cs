@@ -3,6 +3,7 @@ using RinkuApp.Persistence.Data;
 using RinkuApp.Persistence.DTOs;
 using RinkuApp.Persistence.Models;
 using RinkuApp.Persistence.RepositoriesInterface;
+using System.Net.NetworkInformation;
 
 namespace RinkuApp.Persistence.Repositories
 {
@@ -65,9 +66,31 @@ namespace RinkuApp.Persistence.Repositories
             return _context.A01Empleados.Any(obj => obj.Id == id);
         }
 
-        public List<A01Empleados> GetEmpleadoslist()
+        public List<EmpleadoModel> GetEmpleadoslist()
         {
-            return _context.A01Empleados.ToList();
+            IQueryable<EmpleadoModel> entryPoint = (from src in _context.A01Empleados
+                                                    join B02 in _context.B02RolEmpleado on new { Empleado = src.IdEmpleado } equals new { Empleado = B02.IdEmpleado } into joinRolEmpleado
+                                                    from joinB02 in joinRolEmpleado.DefaultIfEmpty()
+                                                    select new EmpleadoModel
+                                                    {
+                                                        Id = src.Id,
+                                                        IdEmpleado = src.IdEmpleado,
+                                                        IdRol = joinB02.IdRol,
+                                                        Nombre = src.Nombre,
+                                                        Apellidos = src.Apellidos,
+                                                        Edad = src.Edad,
+                                                        Sexo = src.Sexo,
+                                                        Email = src.Email,
+                                                        Telefono = src.Telefono,
+                                                        Direccion = src.Direccion,
+                                                        Estatus = src.Estatus,
+                                                        CreatedBy = src.CreatedBy,
+                                                        CreatedOn = src.CreatedOn,
+                                                        LastModifiedBy = src.LastModifiedBy,
+                                                        LastModifiedOn = src.LastModifiedOn,
+
+                                                    });
+            return entryPoint.ToList();
         }
 
         public List<ReporteNomina> GetReporteNomina(string IdEmpleado)
@@ -96,6 +119,34 @@ namespace RinkuApp.Persistence.Repositories
         public async Task<A01Empleados> GeEmpleadosById(long id)
         {
             return await _context.A01Empleados.FindAsync(id) ?? throw new ArgumentNullException("No se encontro información del empleado.");
+        }
+
+
+        public List<EmpleadoModel> GeEmpleadosViewById(long id)
+        {
+            IQueryable<EmpleadoModel> entryPoint = (from src in _context.A01Empleados
+                                                    join B02 in _context.B02RolEmpleado on new { Empleado = src.IdEmpleado } equals new { Empleado = B02.IdEmpleado } into joinRolEmpleado
+                                                    from joinB02 in joinRolEmpleado.DefaultIfEmpty()
+                                                    select new EmpleadoModel
+                                                    {
+                                                        Id = src.Id,
+                                                        IdEmpleado = src.IdEmpleado,
+                                                        IdRol = joinB02.IdRol,
+                                                        Nombre = src.Nombre,
+                                                        Apellidos = src.Apellidos,
+                                                        Edad = src.Edad,
+                                                        Sexo = src.Sexo,
+                                                        Email = src.Email,
+                                                        Telefono = src.Telefono,
+                                                        Direccion = src.Direccion,
+                                                        Estatus = src.Estatus,
+                                                        CreatedBy = src.CreatedBy,
+                                                        CreatedOn = src.CreatedOn,
+                                                        LastModifiedBy = src.LastModifiedBy,
+                                                        LastModifiedOn = src.LastModifiedOn,
+
+                                                    });
+            return entryPoint.Where(x=> x.Id == id).ToList();
         }
     }
 }

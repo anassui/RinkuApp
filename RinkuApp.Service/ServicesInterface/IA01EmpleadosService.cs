@@ -7,7 +7,8 @@ namespace RinkuApp.Services.ServicesInterface
     {
         Task<IEnumerable<A01Empleados>> GetEmpleados();
         Task<A01Empleados> GeEmpleadosById(long id);
-        List<A01Empleados> GetEmpleadoslist();
+        List<EmpleadoModel> GeEmpleadosViewById(long id);
+        List<EmpleadoModel> GetEmpleadoslist();
         public List<ReporteNomina> GetReporteNomina(string IdEmpleado);
 
         Task Update(A01Empleados A01Empleados);

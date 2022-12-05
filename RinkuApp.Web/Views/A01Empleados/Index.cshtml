@@ -45,7 +45,7 @@
                     <div class="card-inner p-0">
                         <div class="nk-tb-list nk-tb-ulist">
                             <div class="nk-tb-item nk-tb-head">
-                                <div class="nk-tb-col"><span class="sub-text">ID Empleado</span></div>
+                                <div class="nk-tb-col"><span class="sub-text">ID Rol</span></div>
                                 <div class="nk-tb-col"><span class="sub-text">Nombre</span></div>
                                 <div class="nk-tb-col"><span class="sub-text">Apellido</span></div>
                                 <div class="nk-tb-col"><span class="sub-text">Edad</span></div>
@@ -72,12 +72,13 @@
                             @foreach (var item in this.ViewBag.Empleados)
                             {
                                 <div class="nk-tb-item">
-                                    <div class="nk-tb-col text-center">
-                                        <span class="tb-lead text-small">@item.Id</span>
+                                    <div class="nk-tb-col">
+                                        <span class="text-small">@item.IdRol?.ToUpper()</span>
                                     </div>
                                     <div class="nk-tb-col">
                                         <span class="text-small">@item.Nombre?.ToUpper()</span>
                                     </div>
+                                  
                                     <div class="nk-tb-col">
                                         <span class="text-small">@item.Apellidos?.ToUpper()</span>
                                     </div>
@@ -105,7 +106,8 @@
                                                     <a href="#" class="btn btn-sm btn-icon btn-trigger dropdown-toggle" data-bs-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
                                                     <div class="dropdown-menu dropdown-menu-end">
                                                         <ul class="link-list-opt no-bdr">
-                                                            <li><a href="/ReporteNomina/@item.IdEmpleado"><em class="icon ni ni-file-text"></em><span>Reporte</span></a></li>
+                                                            <li><a href="/B02RolEmpleado/@item.IdEmpleado"><em class="icon ni ni-file-text"></em><span>Detalle Empleado</span></a></li>
+                                                            <li><a href="/ReporteNomina/@item.IdEmpleado"><em class="icon ni ni-file-text"></em><span>Reporte Nómina</span></a></li>
                                                             <li><a href="/A01Empleados/Formulario/@item.Id"><em class="icon ni ni-edit"></em><span>Editar</span></a></li>
                                                             <li><a href="javascript:Delete(@item.Id)"><em class="icon ni ni-trash-alt"></em><span>Eliminar</span></a></li>
                                                         </ul>

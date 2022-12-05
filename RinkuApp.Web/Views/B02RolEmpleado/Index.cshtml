@@ -9,12 +9,12 @@
     <div class="nk-block-head nk-block-head-sm">
         <div class="nk-block-between">
             <div class="nk-block-head-content">
-                <h3 class="nk-block-title page-title">Lista de Roles por Empleado</h3>
+                <h3 class="nk-block-title page-title">Detalle Empleado </h3>
             </div><!-- .nk-block-head-content -->
             <div class="nk-block-head-content">
                 <div class="toggle-wrap nk-block-tools-toggle">
                     <a href="#" class="btn btn-icon btn-trigger toggle-expand me-n1" data-target="pageMenu"><em class="icon ni ni-menu-alt-r"></em></a>
-                    <div class="toggle-expand-content" data-content="pageMenu">
+            @*        <div class="toggle-expand-content" data-content="pageMenu">
                         <ul class="nk-block-tools g-3">
                             <li class="nk-block-tools-opt">
                                 <div class="drodown">
@@ -27,7 +27,7 @@
                                 </div>
                             </li>
                         </ul>
-                    </div>
+                    </div>*@
                 </div><!-- .toggle-wrap -->
             </div><!-- .nk-block-head-content -->
         </div><!-- .nk-block-between -->
@@ -46,10 +46,11 @@
                         <div class="nk-tb-list nk-tb-ulist is-compact">
                             <div class="nk-tb-item nk-tb-head">
                                 <div class="nk-tb-col"><span class="sub-text">ID Empleado</span></div>
+                                <div class="nk-tb-col"><span class="sub-text">Nombre</span></div>
                                 <div class="nk-tb-col tb-col-md"><span class="sub-text">ID Rol</span></div>
                                 <div class="nk-tb-col tb-col-md"><span class="sub-text">Fecha Comienzo Rol</span></div>
                                 <div class="nk-tb-col"><span class="sub-text">Estatus</span></div>
-                                <div class="nk-tb-col nk-tb-col-tools text-end">
+                               @* <div class="nk-tb-col nk-tb-col-tools text-end">
                                     <div class="dropdown">
                                         <a href="#" class="btn btn-xs btn-outline-light btn-icon dropdown-toggle" data-bs-toggle="dropdown" data-offset="0,5"><em class="icon ni ni-plus"></em></a>
                                         <div class="dropdown-menu dropdown-menu-xs dropdown-menu-end">
@@ -63,11 +64,11 @@
                                             </ul>
                                         </div>
                                     </div>
-                                </div>
+                                </div>*@
                             </div><!-- .nk-tb-item -->
-                            <div class="nk-tb-item">
-                                @foreach (var item in this.ViewBag.RolEmpleado)
-                                {
+                            @foreach (var item in this.ViewBag.RolEmpleado)
+                            {
+                                <div class="nk-tb-item">
                                     <div class="nk-tb-col">
                                         <div class="user-card">
                                             <div class="user-avatar xs bg-primary">
@@ -79,53 +80,36 @@
                                         </div>
                                     </div>
                                     <div class="nk-tb-col tb-col-md">
+                                        <span>@item.Nombre</span>
+                                    </div>
+                                    <div class="nk-tb-col tb-col-md">
                                         <span>@item.IdRol</span>
                                     </div>
                                     <div class="nk-tb-col tb-col-sm">
-                                        <span>@item.FechaComienzoRol</span>
-                                    </div>
-                                    <div class="nk-tb-col tb-col-lg">
-                                        <ul class="list-status">
-                                            <li><em class="icon text-success ni ni-check-circle"></em> <span>Email</span></li>
-                                        </ul>
-                                    </div>
-                                    <div class="nk-tb-col tb-col-xxl">
-                                        <span>10 Feb 2020</span>
+                                        <span>@item.CreatedOn</span>
                                     </div>
                                     <div class="nk-tb-col">
-                                        <span class="tb-status text-success">Active</span>
+                                        <span class="tb-status text-success">@(item.Estatus == 1 ? "Activo" : "Inactivo")</span>
                                     </div>
-                                    <div class="nk-tb-col nk-tb-col-tools">
+                                   @* <div class="nk-tb-col nk-tb-col-tools">
                                         <ul class="nk-tb-actions gx-2">
-                                            <li class="nk-tb-action-hidden">
-                                                <a href="#" class="btn btn-sm btn-icon btn-trigger" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Wallet">
-                                                    <em class="icon ni ni-wallet-fill"></em>
-                                                </a>
-                                            </li>
-                                            <li class="nk-tb-action-hidden">
-                                                <a href="#" class="btn btn-sm btn-icon btn-trigger" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Send Email">
-                                                    <em class="icon ni ni-mail-fill"></em>
-                                                </a>
-                                            </li>
-                                            <li class="nk-tb-action-hidden">
-                                                <a href="#" class="btn btn-sm btn-icon btn-trigger" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Suspend">
-                                                    <em class="icon ni ni-user-cross-fill"></em>
-                                                </a>
-                                            </li>
                                             <li>
                                                 <div class="drodown">
                                                     <a href="#" class="btn btn-sm btn-icon btn-trigger dropdown-toggle" data-bs-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
                                                     <div class="dropdown-menu dropdown-menu-end">
                                                         <ul class="link-list-opt no-bdr">
-                                                            <li><a href="#"><em class="icon ni ni-na"></em><span>Suspender Empleado</span></a></li>
+                                                            <li><a href="/A02Roles/Formulario/@item.Id"><em class="icon ni ni-edit"></em><span>Editar</span></a></li>
+                                                            <li><a href="javascript:Delete(@item.Id)"><em class="icon ni ni-trash-alt"></em><span>Eliminar</span></a></li>
                                                         </ul>
                                                     </div>
                                                 </div>
                                             </li>
                                         </ul>
-                                    </div>
-                                }
-                            </div><!-- .nk-tb-item -->
+                                    </div>*@
+                                </div>
+
+                                <!-- .nk-tb-item -->
+                            }
                         </div><!-- .nk-tb-list -->
                     </div><!-- .card-inner -->
                 </div><!-- .card-inner-group -->

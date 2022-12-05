@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using RinkuApp.Persistence.DTOs;
 using RinkuApp.Persistence.Models;
 using RinkuApp.Services.ServicesInterface;
 
@@ -10,11 +11,15 @@ namespace RinkuApp.Web.Areas.Empleados.Controllers
     public class A01EmpleadosController : Controller
     {
         private readonly IA01EmpleadosService _service;
+        private readonly IA02RolesService _serviceA02;
+        private readonly IB02RolEmpleadoService _serviceB02;
         private readonly ILogger<A01EmpleadosController> _logger;
-        public A01EmpleadosController(IA01EmpleadosService service, ILogger<A01EmpleadosController> logger)
+        public A01EmpleadosController(IA01EmpleadosService service, ILogger<A01EmpleadosController> logger, IA02RolesService serviceA02, IB02RolEmpleadoService serviceB02)
         {
             _service = service;
             _logger = logger;
+            _serviceA02 = serviceA02;
+            _serviceB02 = serviceB02;
         }
         public IActionResult Index()
         {
@@ -24,15 +29,15 @@ namespace RinkuApp.Web.Areas.Empleados.Controllers
         }
 
         [Route("Formulario/{id}")]
-        public async Task<IActionResult> Formulario(long id)
+        public IActionResult Formulario(long id)
         {
             this.ViewBag.Details = null;
 
             if (id != 0)
             {
-                this.ViewBag.Details = await _service.GeEmpleadosById(id).ConfigureAwait(false);
+                this.ViewBag.Details = _service.GeEmpleadosViewById(id)[0];
             }
-           
+            this.ViewBag.Roles = _serviceA02.GetRoleslist();
             return this.View();
         }
 
@@ -52,12 +57,15 @@ namespace RinkuApp.Web.Areas.Empleados.Controllers
         // POST: A01EmpleadossController/Create
         [HttpPost]
         [Route("Create")]
-        public async Task Create(A01Empleados A01Empleados)
+        public async Task Create(EmpleadoModel EmpleadoModel)
         {
+            A01Empleados A01Empleados = new A01Empleados(EmpleadoModel);
+            B02RolEmpleado B02RolEmpleado = new B02RolEmpleado(EmpleadoModel);
             try
             {
-                A01Empleados.IdEmpleado = Guid.NewGuid().ToString();
                 await _service.Create(A01Empleados).ConfigureAwait(false);
+                await _serviceB02.Create(B02RolEmpleado).ConfigureAwait(false);
+
             }
             catch
             {
@@ -67,15 +75,23 @@ namespace RinkuApp.Web.Areas.Empleados.Controllers
 
         [HttpPut]
         [Route("Update")]
-        public async Task Update(A01Empleados A01Empleados)
+        public async Task Update(EmpleadoModel EmpleadoModel)
         {
+            A01Empleados A01Empleados = new A01Empleados(EmpleadoModel);
+            
+
             try
             {
                 await _service.Update(A01Empleados).ConfigureAwait(false);
+
+                var idB02 = _serviceB02.GetRolByIdEmpleado(A01Empleados.IdEmpleado == null ? "" : A01Empleados.IdEmpleado);
+                B02RolEmpleado B02RolEmpleado = new B02RolEmpleado(EmpleadoModel);
+                B02RolEmpleado.Id = idB02.Id; // se busca el id a actualizar del mismo Empleado
+                await _serviceB02.Update(B02RolEmpleado).ConfigureAwait(false);
             }
-            catch
+            catch(Exception ex)
             {
-                throw new ArgumentException("Fallo Actualización de Empleado");
+                throw new ArgumentException(ex.Message);
             }
         }
 

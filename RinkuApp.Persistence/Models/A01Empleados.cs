@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using RinkuApp.Persistence.DTOs;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json;
 
@@ -49,41 +50,25 @@ namespace RinkuApp.Persistence.Models
         public A01Empleados() 
         { 
         }
-        public A01Empleados(long id, string? idEmpleado, string? nombre, string? apellidos, string? edad, string? sexo, string? email, string? telefono, string? direccion, int estatus, string? createdBy, DateTime createdOn, string? lastModifiedBy, DateTime? lastModifiedOn)
+        public A01Empleados(EmpleadoModel src)
         {
-            Id = id;
-            IdEmpleado = idEmpleado;
-            Nombre = nombre;
-            Apellidos = apellidos;
-            Edad = edad;
-            Sexo = sexo;
-            Email = email;
-            Telefono = telefono;
-            Direccion = direccion;
-            Estatus = estatus;
-            CreatedBy = createdBy;
-            CreatedOn = createdOn;
-            LastModifiedBy = lastModifiedBy;
-            LastModifiedOn = lastModifiedOn;
+            Id = src.Id;
+            IdEmpleado = src.IdEmpleado;
+            Nombre = src.Nombre;
+            Apellidos = src.Apellidos;
+            Edad = src.Edad;
+            Sexo = src.Sexo;
+            Email = src.Email;
+            Telefono = src.Telefono;
+            Direccion = src.Direccion;
+            Estatus = src.Estatus;
+            CreatedBy = src.CreatedBy;
+            CreatedOn = src.CreatedOn;
+            LastModifiedBy = src.LastModifiedBy;
+            LastModifiedOn = src.LastModifiedOn;
         }
 
-        //public A01Empleados(A01Empleados src)
-        //{
-        //    Id = src.Id;
-        //    IdEmpleado = src.IdEmpleado;
-        //    Nombre = src.Nombre;
-        //    Apellidos = src.Apellidos;
-        //    Edad = src.Edad;
-        //    Sexo = src.Sexo;
-        //    Email = src.Email;
-        //    Telefono = src.Telefono;
-        //    Direccion = src.Direccion;
-        //    Estatus = src.Estatus;
-        //    CreatedBy = src.CreatedBy;
-        //    CreatedOn = src.CreatedOn;
-        //    LastModifiedBy = src.LastModifiedBy;
-        //    LastModifiedOn = src.LastModifiedOn;
-        //}
+        
 
         public void UpdateFromJson(JsonElement jsonrecord)
         {

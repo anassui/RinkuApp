@@ -1,9 +1,4 @@
 ﻿using RinkuApp.Persistence.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RinkuApp.Persistence.RepositoriesInterface
 {
@@ -11,7 +6,7 @@ namespace RinkuApp.Persistence.RepositoriesInterface
     {
         Task<IEnumerable<A02Roles>> GetRoles();
         List<A02Roles> GetRoleslist();
-
+     
         Task<A02Roles> GetRolesById(long id);
 
         Task Update(A02Roles A02Roles);

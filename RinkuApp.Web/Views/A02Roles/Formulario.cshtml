@@ -44,8 +44,19 @@
                                             <div class="form-icon form-icon-right xl">
                                                 <em class="icon ni ni-coin-alt"></em>
                                             </div>
-                                            <input type="number" class="form-control form-control-xl form-control-outlined" id="salario" name="salario" value="@(this.ViewBag.Details is null ? "" : this.ViewBag.Details.Salario)">
-                                            <label class="form-label-outlined" for="outlined-normal">Salario x Hora (MXN)</label>
+                                            <input type="number" class="form-control form-control-xl form-control-outlined" id="salario" name="salario" value="@(this.ViewBag.Details is null ? "" : this.ViewBag.Details.SalarioBase)">
+                                            <label class="form-label-outlined" for="outlined-normal">Salario Base(MXN)</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-sm-6">
+                                    <div class="form-group">
+                                        <div class="form-control-wrap">
+                                            <div class="form-icon form-icon-right xl">
+                                                <em class="icon ni ni-coin-alt"></em>
+                                            </div>
+                                            <input type="number" class="form-control form-control-xl form-control-outlined" id="bono" name="bono" value="@(this.ViewBag.Details is null ? "" : this.ViewBag.Details.BonoXHora)">
+                                            <label class="form-label-outlined" for="outlined-normal">Bono x Hora (MXN)</label>
                                         </div>
                                     </div>
                                 </div>
@@ -108,7 +119,8 @@
                     Id: @(this.ViewBag.Details is null ? 0 : this.ViewBag.Details.Id),
                     IdRol: '@this.ViewBag.Details' == null ? 0 : $("#idrol").val(),
                     DescripcionRol: $("#descripcion").val(),
-                    Salario: $("#salario").val(),
+                    SalarioBase: $("#salario").val(),
+                    BonoXHora: $("#bono").val(),
                     Estatus: 1,///$("#estatus").val(),
                     CreatedBy: '',
                     CreatedOn: moment().toISOString(),

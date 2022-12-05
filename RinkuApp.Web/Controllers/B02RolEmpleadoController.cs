@@ -17,9 +17,10 @@ namespace RinkuApp.Web.Areas.Empleados.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+        [Route("{idEmpleado}")]
+        public IActionResult Index(string idEmpleado)
         {
-            var RolEmpleado = _service.GetRolesXEmpleadolist();
+            var RolEmpleado = _service.GetRolEmpleadoView(idEmpleado);
             this.ViewBag.RolEmpleado = RolEmpleado;
             return this.View();
         }
@@ -44,7 +45,7 @@ namespace RinkuApp.Web.Areas.Empleados.Controllers
             return await _service.GetEmpleadoRol().ConfigureAwait(false);
         }
 
-        [HttpGet("{id}")]
+   
         public async Task<B02RolEmpleado> GetById(long id)
         {
             return await _service.GetRolEmpleadoById(id).ConfigureAwait(false);
